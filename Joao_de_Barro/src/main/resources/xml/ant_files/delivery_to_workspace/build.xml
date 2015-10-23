@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="delivery_to_workspace">
+	
+	<property environment="env"/>
+	<property name="PROJETOS_MAVEN_DIR" value="${env.PROJETOS_MAVEN_DIR}"/>
+	<property name="WORKSPACE_DIR" value="${env.WORKSPACE_DIR}"/>
+	
+	<target name="prepare">
+        <echo message="PROJETOS_MAVEN_DIR: ${PROJETOS_MAVEN_DIR}"/>
+		<echo message="WORKSPACE_DIR: ${WORKSPACE_DIR}"/>
+	</target>
+	
+	<target name="delivery_to_workspace" depends="prepare">
+		<antcall target="delivery_Joao_de_Barro_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Lib_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Ambiente_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Logger_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Test_Logger_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Common_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Batch_App_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Batch_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Web_App_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Web_to_workspace"/>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/./Joao_de_Barro/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/./Joao_de_Barro">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Lib_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Lib/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Lib" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Ambiente_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Ambiente/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Ambiente" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Logger_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Logger/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Logger" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Test_Logger_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Test_Logger/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Test_Logger" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Common_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Common/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Common" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Batch_App_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Batch_App/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Batch_App" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Batch_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Batch/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Batch" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Web_App_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Web_App/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Web_App" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Web_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Web/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Web" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

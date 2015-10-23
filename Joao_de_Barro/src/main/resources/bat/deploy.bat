@@ -1,0 +1,1 @@
+copy %PROJETOS_MAVEN_DIR%\GPS\GPS_Web_Tomcat\target\gde.war %CATALINA_HOME%\webapps\

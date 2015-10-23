@@ -1,0 +1,75 @@
+CREATE TABLE JAVA_PROJECT (
+	ide_java_project AUTOINCREMENT PRIMARY KEY,
+	nom_java_project VARCHAR(64) NOT NULL
+);
+
+ALTER TABLE JAVA_PROJECT
+	ADD CONSTRAINT JAVA_PROJECT_UNIQUE_KEY
+		UNIQUE (nom_java_project);
+
+
+
+CREATE TABLE JAVA_MODULE (
+	ide_java_module AUTOINCREMENT PRIMARY KEY,
+	nom_java_module VARCHAR(64) NOT NULL,
+	ide_java_project INTEGER NOT NULL
+);
+
+ALTER TABLE JAVA_MODULE 
+	ADD CONSTRAINT JAVA_MODULE_UNIQUE_KEY
+		UNIQUE (nom_java_module);
+
+ALTER TABLE JAVA_MODULE 
+	ADD CONSTRAINT JAVA_MODULE_FOREIGN_KEY_ide_java_project
+		FOREIGN KEY (ide_java_project) REFERENCES JAVA_PROJECT (ide_java_project);
+
+
+
+CREATE TABLE JAVA_ENTITY (
+	ide_java_entity AUTOINCREMENT PRIMARY KEY,
+	nom_java_entity VARCHAR(64) NOT NULL,
+	nom_db_table VARCHAR(64),
+	ide_java_module INTEGER NOT NULL
+);
+
+ALTER TABLE JAVA_ENTITY 
+	ADD CONSTRAINT JAVA_ENTITY_UNIQUE_KEY
+		UNIQUE (nom_java_entity, ide_java_module);
+
+ALTER TABLE JAVA_ENTITY 
+	ADD CONSTRAINT JAVA_ENTITY_FOREIGN_KEY_ide_java_project
+		FOREIGN KEY (ide_java_module) REFERENCES JAVA_MODULE (ide_java_module);
+
+
+
+CREATE TABLE JAVA_ATTRIBUTE_TYPE (
+	ide_java_attribute_type AUTOINCREMENT PRIMARY KEY,
+	nom_java_attribute_type VARCHAR(16) NOT NULL
+);
+
+ALTER TABLE JAVA_ATTRIBUTE_TYPE 
+	ADD CONSTRAINT JAVA_ATTRIBUTE_TYPE_UNIQUE_KEY
+		UNIQUE (nom_java_attribute_type);
+
+
+
+CREATE TABLE JAVA_ATTRIBUTE (
+	ide_java_attribute AUTOINCREMENT PRIMARY KEY,
+	nom_java_attribute VARCHAR(64) NOT NULL,
+	ide_java_entity INTEGER NOT NULL,
+	ide_java_attribute_type INTEGER NOT NULL,
+	nom_db_column VARCHAR(64)
+);
+
+ALTER TABLE JAVA_ATTRIBUTE 
+	ADD CONSTRAINT JAVA_ATTRIBUTE_UNIQUE_KEY
+		UNIQUE (nom_java_attribute, ide_java_entity);
+
+ALTER TABLE JAVA_ATTRIBUTE 
+	ADD CONSTRAINT JAVA_ATTRIBUTE_FOREIGN_KEY_ide_java_entity
+		FOREIGN KEY (ide_java_entity) REFERENCES JAVA_ENTITY (ide_java_entity);
+
+ALTER TABLE JAVA_ATTRIBUTE 
+	ADD CONSTRAINT JAVA_ATTRIBUTE_FOREIGN_KEY_ide_java_attribute_type
+		FOREIGN KEY (ide_java_attribute_type) REFERENCES JAVA_ATTRIBUTE_TYPE (ide_java_attribute_type);
+		

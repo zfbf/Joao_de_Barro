@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="create_workspace_directories">
+	
+	<property environment="env"/>
+	<property name="PROJETOS_MAVEN_DIR" value="${env.PROJETOS_MAVEN_DIR}"/>
+	<property name="WORKSPACE_DIR" value="${env.WORKSPACE_DIR}"/>
+	
+	<target name="prepare">
+        <echo message="PROJETOS_MAVEN_DIR: ${PROJETOS_MAVEN_DIR}"/>
+		<echo message="WORKSPACE_DIR: ${WORKSPACE_DIR}"/>
+	</target>
+	
+	<target name="create_workspace_directories" depends="prepare">
+		<antcall target="create_Joao_de_Barro"/>
+		<antcall target="create_Joao_de_Barro_Lib"/>
+		<antcall target="create_Joao_de_Barro_Ambiente"/>
+		<antcall target="create_Joao_de_Barro_Logger"/>
+		<antcall target="create_Joao_de_Barro_Test_Logger"/>
+		<antcall target="create_Joao_de_Barro_Common"/>
+		<antcall target="create_Joao_de_Barro_Batch_App"/>
+		<antcall target="create_Joao_de_Barro_Batch"/>
+		<antcall target="create_Joao_de_Barro_Web_App"/>
+		<antcall target="create_Joao_de_Barro_Web"/>
+	</target>
+	
+	<target name="create_Joao_de_Barro">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/./Joao_de_Barro">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Lib">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Lib" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Ambiente">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Ambiente" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Logger">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Logger" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Test_Logger">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Test_Logger" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Common">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Common" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Batch_App">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Batch_App" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Batch">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Batch" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Web_App">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Web_App" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Web">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Web" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

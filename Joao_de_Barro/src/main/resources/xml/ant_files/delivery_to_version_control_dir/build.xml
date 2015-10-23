@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="delivery_to_version_control_dir">
+	
+	<property environment="env"/>
+	<property name="PROJETOS_MAVEN_DIR" value="${env.PROJETOS_MAVEN_DIR}"/>
+	<property name="VERSION_CONTROL_DIR" value="${env.VERSION_CONTROL_DIR}"/>
+	
+	<target name="prepare">
+        <echo message="PROJETOS_MAVEN_DIR: ${PROJETOS_MAVEN_DIR}"/>
+		<echo message="VERSION_CONTROL_DIR: ${VERSION_CONTROL_DIR}"/>
+	</target>
+	
+	<target name="delivery_to_version_control_dir" depends="prepare">
+		<antcall target="delivery_Joao_de_Barro_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Lib_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Ambiente_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Logger_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Test_Logger_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Common_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Batch_App_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Batch_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Web_App_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Web_to_version_control_dir"/>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/./Joao_de_Barro/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/./Joao_de_Barro/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/./Joao_de_Barro" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/./Joao_de_Barro">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Lib_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Ambiente_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Ambiente">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Logger_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Logger">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Test_Logger_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Test_Logger">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Common_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Batch_App_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Batch_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Batch_App/Joao_de_Barro_Batch">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Web_App_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Web_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Web_App/Joao_de_Barro_Web">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

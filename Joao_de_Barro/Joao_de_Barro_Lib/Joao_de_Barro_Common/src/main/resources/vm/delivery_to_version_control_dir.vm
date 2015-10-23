@@ -1,0 +1,28 @@
+##Template de uso geral para o metodo toString()
+##
+#set( $ATTRIBUTE_TYPE_DATE = "5" )
+##
+	
+	
+	<target name="delivery_to_version_control_dir" depends="prepare">
+#foreach( $maven_module in $maven_modules )
+		<antcall target="delivery_$maven_module.getName()_to_version_control_dir"/>
+#end
+	</target>
+##
+#foreach( $maven_module in $maven_modules )	
+	
+	<target name="delivery_$maven_module.getName()_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/$maven_module.getRelativePath()/$maven_module.getName()/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/$maven_module.getRelativePath()/$maven_module.getName()/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/$maven_module.getRelativePath()/$maven_module.getName()" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/$maven_module.getRelativePath()/$maven_module.getName()">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+#end	
+##

@@ -1,0 +1,95 @@
+Seguem abaixo algumas recomendações para se tirar um melhor proveito da 
+ferramenta "Joao de Barro":  
+
+
+1 - Utilizar algum mecanismo de controle de versão que pode variar desde
+    a simples compactação periódica do projeto em algum arquivo .zip ou
+    .tar.gz ou a utilização de sistemas de controle de versão a exemplo
+    do Git.
+
+2 - Instalar o Java
+
+3 - Instalar o Ant
+
+4 - Instalar o Maven
+
+5 - Criar um script .bat com definições para as tecnologias envolvidas
+	Exemplo: pa.bat (abaixo descriminado)
+	
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+-x-x-x-x-  pa.bat   -x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+@echo off
+echo Preparando ambiente para o Ant e o Maven
+
+set classpath=
+set JAVA_HOME=C:\Java\jdk1.5.0
+set ANT_HOME=D:\apache-ant-1.8.2
+set M2_HOME=D:\apache-maven-3.0.5
+set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%M2_HOME%\bin;%PATH%
+
+echo Ambiente OK
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+
+
+6 - Definir as seguintes variáveis de sistema:
+PROJETOS_MAVEN_DIR
+VERSION_CONTROL_DIR
+WORKSPACE_DIR
+JOAO_DE_BARRO_OUTPUT_DIR
+
+Exemplos:
+PROJETOS_MAVEN_DIR = D:\home\zfbf\projetos_maven
+WORKSPACE_DIR = D:\home\zfbf\workspace
+VERSION_CONTROL_DIR = D:\home\zfbf\version_control
+JOAO_DE_BARRO_WORK_DIR = D:\home\zfbf\joao_de_barro
+
+OBS: A utilização de uma variável como VERSION_CONTROL_DIR em detrimento de uma
+     como GIT_REPOSITORY_DIR deve-se à preocupação em deixar a cargo do
+     desenvolvedor a decisão de remover alguns arquivos do controle de versão
+     por razões de confidencialidade.
+      
+
+7 - Criar o diretório Joao_de_Barro em %PROJETOS_MAVEN_DIR%
+
+
+8 - Copiar os arquivos baixados referentes ao código fonte da ferramenta
+    "Joao de Barro" para o diretório [VERSION_CONTROL_DIR]/Joao_de_Barro
+
+
+9 - Copiar todos os arquivos .bat de [VERSION_CONTROL_DIR]\Joao_de_Barro\src\main\resources\bat 
+	para [PROJETOS_MAVEN_DIR]\Joao_de_Barro
+
+
+10 - Dentro de %PROJETOS_MAVEN_DIR%\GPS executar:
+	ufcr.bat
+	mvn install
+	mvn eclipse:eclipse
+	mvn -Declipse.workspace=%WORKSPACE_DIR% eclipse:add-maven-repo
+	dtw.bat
+
+
+11 - Abrir o Eclipse e criar os projetos:
+	Joao_de_Barro
+	Joao_de_Barro_Common
+	Joao_de_Barro_Batch_App
+
+
+12 - O ambiente está configurado.   Parabéns!
+
+
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+-x-x-x-x- Notas Adicionais  -x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+
+
+A partir deste momento:
+
+1 - Todos os comandos de "update" e "delivery" deverão ser feitos 
+    a partir de [PROJETOS_MAVEN_DIR]\Joao_de_Barro .
+2 - Os comandos de delivery deverão utilizar o diretório 
+    [VERSION_CONTROL_DIR]\Joao_de_Barro .
+3 - Caso o ClearCase seja utilizado, o delivery real deverá ser feito com alguma 
+    ferramenta de comparação de arquivos, como o KDiff3, e a efetivação
+    de commit no ClearCase deverá ser realizada através do ClearCase Explorer.
