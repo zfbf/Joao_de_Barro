@@ -1,0 +1,32 @@
+##Template de uso geral para o artefato update_from_workspace (build.xml)
+##
+##
+
+
+	<target name="update_from_workspace" depends="prepare">
+#foreach( $maven_module in $maven_modules )
+		<antcall target="update_from_$maven_module.getName()"/>
+#end
+	</target>
+##
+##
+##Template de uso geral do target delivery_to
+##
+##
+##
+#foreach( $maven_module in $maven_modules )	
+	
+	<target name="update_from_$maven_module.getName()">
+		<sync todir="${PROJETOS_MAVEN_DIR}/$maven_module.getRelativePath()/$maven_module.getName()/src" verbose="true">
+		    <fileset dir="${WORKSPACE_DIR}/$maven_module.getName()/src"/>
+		</sync>
+		
+		<copy todir="${PROJETOS_MAVEN_DIR}/$maven_module.getRelativePath()/$maven_module.getName()" preservelastmodified="true">
+		    <fileset dir="${WORKSPACE_DIR}/$maven_module.getName()">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+#end
+##

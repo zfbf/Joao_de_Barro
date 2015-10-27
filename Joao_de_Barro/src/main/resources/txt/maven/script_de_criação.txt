@@ -1,9 +1,12 @@
 - Joao_de_Barro
 	- Joao_de_Barro_Lib
+		- Joao_de_Barro_Infrastructure
 		- Joao_de_Barro_Ambiente
 		- Joao_de_Barro_Logger
 		- Joao_de_Barro_Test_Logger
-		- Joao_de_Barro_Common
+		- Joao_de_Barro_Model
+		- Joao_de_Barro_Services
+		- Joao_de_Barro_Persistence
 	- Joao_de_Barro_Batch_App
 		- Joao_de_Barro_Batch
 	- Joao_de_Barro_Web_App
@@ -18,11 +21,15 @@ mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Lib -Dpa
 mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Batch_App -DpackageName=br.com.nitrox.joaoDeBarro
 mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Web_App -DpackageName=br.com.nitrox.joaoDeBarro
 
-projetos_maven\Joao_de_Barro\Lib:
+projetos_maven\Joao_de_Barro\Joao_de_Barro_Lib:
+mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Infrastructure -DpackageName=br.com.nitrox.joaoDeBarro.business.infrastructure -DarchetypeArtifactId=maven-archetype-quickstart
 mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Ambiente -DpackageName=br.com.nitrox.joaoDeBarro.ambiente -DarchetypeArtifactId=maven-archetype-quickstart
 mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Logger -DpackageName=br.com.nitrox.joaoDeBarro.logger -DarchetypeArtifactId=maven-archetype-quickstart
 mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Test_Logger -DpackageName=br.com.nitrox.joaoDeBarro.logger -DarchetypeArtifactId=maven-archetype-quickstart
-mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Common -DpackageName=br.com.nitrox.joaoDeBarro.common -DarchetypeArtifactId=maven-archetype-quickstart
+mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Model -DpackageName=br.com.nitrox.joaoDeBarro.common.business.model -DarchetypeArtifactId=maven-archetype-quickstart
+mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Services -DpackageName=br.com.nitrox.joaoDeBarro.common.business.services -DarchetypeArtifactId=maven-archetype-quickstart
+mvn archetype:generate -DgroupId=br.com.nitrox.joaoDeBarro -DartifactId=Joao_de_Barro_Persistence -DpackageName=br.com.nitrox.joaoDeBarro.common.persistence -DarchetypeArtifactId=maven-archetype-quickstart
+
 
 OBS: Modificar o tipo do packaging do módulo pai, Extras, para pom: 
 	Localização: após [gav]

@@ -1,0 +1,7 @@
+##Template de uso geral para declaração de atributos
+##
+##
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+	private $java_attribute.getJavaAttributeTypeName() $java_attribute.getAttributeStyleName();
+#end
+##

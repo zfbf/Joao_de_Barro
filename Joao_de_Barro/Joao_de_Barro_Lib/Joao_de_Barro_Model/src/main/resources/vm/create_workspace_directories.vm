@@ -1,0 +1,21 @@
+## Template de uso geral para a geração de trecho de código do artefato "create_workspace_directories".
+##
+##
+	
+	<target name="create_workspace_directories" depends="prepare">
+#foreach( $maven_module in $maven_modules )
+		<antcall target="create_$maven_module.getName()"/>
+#end
+	</target>
+##	
+#foreach( $maven_module in $maven_modules )	
+	
+	<target name="create_$maven_module.getName()">
+		<copy todir="${WORKSPACE_DIR}/$maven_module.getName()" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/$maven_module.getRelativePath()/$maven_module.getName()">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+#end	
+##

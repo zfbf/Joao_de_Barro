@@ -1,0 +1,10 @@
+##
+##
+public class $java_entity.getJavaEntityClassStyleName()Dto {
+##
+
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+	private $java_attribute.getJavaAttributeTypeName() $java_attribute.getAttributeStyleName();
+#end
+
+}

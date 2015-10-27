@@ -1,0 +1,9 @@
+##Template de uso geral do metodo get
+##
+##
+	
+	
+	public $java_attribute.getJavaAttributeTypeName() get$java_attribute.getClassStyleName()() {
+		return this.$java_attribute.getAttributeStyleName();
+	}
+##

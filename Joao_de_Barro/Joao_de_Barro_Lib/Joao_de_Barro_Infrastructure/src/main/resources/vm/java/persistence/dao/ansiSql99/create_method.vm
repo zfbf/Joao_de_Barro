@@ -1,0 +1,83 @@
+##Template de uso geral do metodo set
+##
+#set( $ATTRIBUTE_TYPE_STRING = "4" )
+#set( $ATTRIBUTE_TYPE_DATE = "5" )
+#set( $ATTRIBUTE_TYPE_INTEGER = "6" )
+#set( $directive.foreach.counter.initial.value = 0 )
+##
+	
+	
+	public void create( ${javaEntity.getNameClassStyle()}Dto[] ${javaEntity.getNameAttributeStyle()}Array ) {
+		String methodName = "create";
+		debugInicioDoMetodo( methodName );
+		
+		${javaEntity.getNameClassStyle()}Dto ${javaEntity.getNameAttributeStyle()} = null;
+		PreparedStatement pstm = null;
+		String sql = null;
+		int parameterIndex = 1;
+		
+		try {
+			sql = sqlServiceLocator.getSql( "create" );
+			pstm = buildPreparedStatement( sql );
+			
+			for ( int i = 0; i < ${javaEntity.getNameAttributeStyle()}Array.length; i++ ) {
+				${javaEntity.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}Array[i];
+				parameterIndex = 1;
+#foreach( $metaAttribute in $metaAttributes )
+#if ( $metaAttribute.getAttributeType() == $ATTRIBUTE_TYPE_DATE ) 
+				
+				Date ${metaAttribute.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}.get${metaAttribute.getNameClassStyle()}();
+				
+				if ( ${metaAttribute.getNameAttributeStyle()} != null ) {
+					pstm.setDate( parameterIndex++, new java.sql.Date( ${metaAttribute.getNameAttributeStyle()}.getTime() ));
+				} else {
+					pstm.setNull( parameterIndex++, Types.DATE );
+				}
+#elseif ( $metaAttribute.getAttributeType() == $ATTRIBUTE_TYPE_INTEGER )
+				
+				Integer ${metaAttribute.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}.get${metaAttribute.getNameClassStyle()}();
+				
+				if ( ${metaAttribute.getNameAttributeStyle()} != null ) {
+					pstm.setInt( parameterIndex++, ${metaAttribute.getNameAttributeStyle()}.intValue() );
+				} else {
+					pstm.setNull( parameterIndex++, Types.INTEGER );
+				}
+#elseif ( $metaAttribute.getAttributeType() == $ATTRIBUTE_TYPE_STRING )
+				
+				String ${metaAttribute.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}.get${metaAttribute.getNameClassStyle()}();
+				
+				if ( ${metaAttribute.getNameAttributeStyle()} != null ) {
+					pstm.setString( parameterIndex++, ${metaAttribute.getNameAttributeStyle()} );
+				} else {
+					pstm.setNull( parameterIndex++, Types.CHAR );
+				}
+#else
+				
+				// $metaAttribute.getTypeName() ${metaAttribute.getNameAttributeStyle()}
+#end ##bloco if
+#end ## bloco foreach
+				
+				int nrAtualizacoes = pstm.executeUpdate();
+				
+				if ( DEBUG ) {
+					debug( methodName, "nrAtualiacoes", nrAtualizacoes );
+					debug( methodName, "${javaEntity.getNameAttributeStyle()}.get${metaAttributes.get(0).getNameClassStyle()}()", 
+							${javaEntity.getNameAttributeStyle()}.get${metaAttributes.get(0).getNameClassStyle()}() );
+				}
+			}
+		} catch ( ClassNotFoundException e ) {
+			String message = "Verificar se a fonte de dados Microsoft Access ODBC esta corretamente configurada.";
+			warn( methodName, message );
+			error( methodName, e );
+		} catch ( SQLException e ) {
+			debug( methodName, "sql", sql );
+			debug( methodName, "e.getSQLState()", e.getSQLState() );
+			debug( methodName, "parameterIndex", parameterIndex );
+			error( methodName, e );
+		} catch ( Exception e ) {
+			error( methodName, e );
+		} finally {
+			close( pstm );
+		}
+	}
+##

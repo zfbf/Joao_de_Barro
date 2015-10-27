@@ -1,0 +1,10 @@
+##Template de uso geral do metodo get
+##
+##
+	
+	
+	public Date get${java_attribute.getClassStyleName()}() {
+		return ( this.${java_attribute.getAttributeStyleName()} == null ?
+				null : new Date( this.${java_attribute.getAttributeStyleName()}.getTime() ));
+	}
+##

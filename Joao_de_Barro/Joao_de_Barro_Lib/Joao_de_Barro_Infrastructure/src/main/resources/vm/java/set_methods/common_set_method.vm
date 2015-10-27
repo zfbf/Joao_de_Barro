@@ -1,0 +1,9 @@
+##Template de uso geral do metodo set
+##
+##
+	
+	
+	public void set$java_attribute.getClassStyleName()( $java_attribute.getJavaAttributeTypeName() $java_attribute.getAttributeStyleName() ) {
+		this.$java_attribute.getAttributeStyleName() = $java_attribute.getAttributeStyleName();
+	}
+##

@@ -1,8 +1,8 @@
 package br.com.nitrox.joaoDeBarro.batchApp.presentation.text;
 
 import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
-import br.com.nitrox.joaoDeBarro.common.business.generators.VelocityGeneratorCoordinator;
-import br.com.nitrox.joaoDeBarro.common.business.generators.antFile.createWorkspaceDirectories.CreateWorkspaceDirectoriesCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityGeneratorCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.createWorkspaceDirectories.CreateWorkspaceDirectoriesCoordinator;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.AbstractStaticJoaoDeBarroLogger;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.configurator.Log4jConfigurator;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.serviceLocator.Log4jConfiguratorServiceLocator;

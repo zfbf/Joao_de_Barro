@@ -13,10 +13,13 @@
 	<target name="delivery_to_version_control_dir" depends="prepare">
 		<antcall target="delivery_Joao_de_Barro_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Lib_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Infrastructure_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Ambiente_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Logger_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Test_Logger_to_version_control_dir"/>
-		<antcall target="delivery_Joao_de_Barro_Common_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Model_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Persistence_to_version_control_dir"/>
+		<antcall target="delivery_Joao_de_Barro_Services_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Batch_App_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Batch_to_version_control_dir"/>
 		<antcall target="delivery_Joao_de_Barro_Web_App_to_version_control_dir"/>
@@ -43,6 +46,19 @@
 		
 		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib" preservelastmodified="true">
 		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Infrastructure_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure">
 				<include name="pom.xml"/>
 				<include name="build.xml"/>
 			</fileset>
@@ -88,13 +104,39 @@
 		</copy>
 	</target>
 	
-	<target name="delivery_Joao_de_Barro_Common_to_version_control_dir">
-		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common/src">
-			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common/src"/>
+	<target name="delivery_Joao_de_Barro_Model_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model/src"/>
 		</sync>
 		
-		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common" preservelastmodified="true">
-		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common">
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Persistence_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence">
+				<include name="pom.xml"/>
+				<include name="build.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Services_to_version_control_dir">
+		<sync todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services/src">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services/src"/>
+		</sync>
+		
+		<copy todir="${VERSION_CONTROL_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services" preservelastmodified="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services">
 				<include name="pom.xml"/>
 				<include name="build.xml"/>
 			</fileset>

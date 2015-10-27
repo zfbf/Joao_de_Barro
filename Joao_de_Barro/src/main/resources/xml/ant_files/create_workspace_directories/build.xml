@@ -13,10 +13,13 @@
 	<target name="create_workspace_directories" depends="prepare">
 		<antcall target="create_Joao_de_Barro"/>
 		<antcall target="create_Joao_de_Barro_Lib"/>
+		<antcall target="create_Joao_de_Barro_Infrastructure"/>
 		<antcall target="create_Joao_de_Barro_Ambiente"/>
 		<antcall target="create_Joao_de_Barro_Logger"/>
 		<antcall target="create_Joao_de_Barro_Test_Logger"/>
-		<antcall target="create_Joao_de_Barro_Common"/>
+		<antcall target="create_Joao_de_Barro_Model"/>
+		<antcall target="create_Joao_de_Barro_Persistence"/>
+		<antcall target="create_Joao_de_Barro_Services"/>
 		<antcall target="create_Joao_de_Barro_Batch_App"/>
 		<antcall target="create_Joao_de_Barro_Batch"/>
 		<antcall target="create_Joao_de_Barro_Web_App"/>
@@ -34,6 +37,14 @@
 	<target name="create_Joao_de_Barro_Lib">
 		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Lib" preservelastmodified="true" verbose="true">
 		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Infrastructure">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Infrastructure" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure">
 				<include name="src/**/*"/>
 			</fileset>
 		</copy>
@@ -63,9 +74,25 @@
 		</copy>
 	</target>
 	
-	<target name="create_Joao_de_Barro_Common">
-		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Common" preservelastmodified="true" verbose="true">
-		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common">
+	<target name="create_Joao_de_Barro_Model">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Model" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Persistence">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Persistence" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence">
+				<include name="src/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="create_Joao_de_Barro_Services">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Services" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services">
 				<include name="src/**/*"/>
 			</fileset>
 		</copy>

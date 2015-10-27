@@ -1,0 +1,25 @@
+##Template de uso geral para o metodo toString()
+##
+#set( $ATTRIBUTE_TYPE_DATE = "5" )
+##
+	
+	
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append( this.getClass().getName() );
+		DateFormat df = new SimpleDateFormat( "dd/MM/yyyy" );
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if ( $java_attribute.getJavaAttributeType() == $ATTRIBUTE_TYPE_DATE )
+		
+		if ( get${java_attribute.getClassStyleName()}() != null ) {
+			sb.append( "\n\t$java_attribute.getAttributeStyleName() = " ).append( df.format( get${java_attribute.getClassStyleName()}() ));
+		} else {
+			sb.append( "\n\t$java_attribute.getAttributeStyleName() = " ).append( get${java_attribute.getClassStyleName()}() );
+		}
+#else
+		sb.append( "\n\t${java_attribute.getAttributeStyleName()} = " ).append( get${java_attribute.getClassStyleName()}() );
+#end
+#end
+		return sb.toString();
+	}
+##

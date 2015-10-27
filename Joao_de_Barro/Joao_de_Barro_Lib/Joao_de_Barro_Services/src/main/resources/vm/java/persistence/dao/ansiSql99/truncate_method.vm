@@ -1,0 +1,33 @@
+##Template de uso geral do metodo set
+##
+#set( $ATTRIBUTE_TYPE_STRING = "4" )
+#set( $ATTRIBUTE_TYPE_DATE = "5" )
+#set( $ATTRIBUTE_TYPE_INTEGER = "6" )
+#set( $directive.foreach.counter.initial.value = 0 )
+##
+	
+	
+	public void truncate() {
+		String methodName = "truncate";
+		debugInicioDoMetodo( methodName );
+		
+		PreparedStatement pstm = null;
+		String sql = null;
+		
+		try {
+			sql = sqlServiceLocator.getSql( "truncate" );
+			pstm = buildPreparedStatement( sql );
+			pstm.executeUpdate();
+		} catch ( ClassNotFoundException e ) {
+			error( methodName, e );
+		} catch ( SQLException e ) {
+			debug( methodName, "sql", sql );
+			debug( methodName, "e.getSQLState()", e.getSQLState() );
+			error( methodName, e );
+		} catch ( Exception e ) {
+			error( methodName, e );
+		} finally {
+			close( pstm );
+		}
+	}
+##

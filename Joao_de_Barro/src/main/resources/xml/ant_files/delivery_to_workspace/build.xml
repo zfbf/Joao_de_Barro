@@ -13,10 +13,13 @@
 	<target name="delivery_to_workspace" depends="prepare">
 		<antcall target="delivery_Joao_de_Barro_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Lib_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Infrastructure_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Ambiente_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Logger_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Test_Logger_to_workspace"/>
-		<antcall target="delivery_Joao_de_Barro_Common_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Model_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Persistence_to_workspace"/>
+		<antcall target="delivery_Joao_de_Barro_Services_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Batch_App_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Batch_to_workspace"/>
 		<antcall target="delivery_Joao_de_Barro_Web_App_to_workspace"/>
@@ -43,6 +46,19 @@
 		
 		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Lib" preservelastmodified="true" verbose="true">
 		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Infrastructure_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Infrastructure/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Infrastructure" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Infrastructure">
 				<include name="pom.xml"/>
 				<include name=".*"/>
 			</fileset>
@@ -88,13 +104,39 @@
 		</copy>
 	</target>
 	
-	<target name="delivery_Joao_de_Barro_Common_to_workspace">
-		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Common/src" verbose="true">
-			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common/src"/>
+	<target name="delivery_Joao_de_Barro_Model_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Model/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model/src"/>
 		</sync>
 		
-		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Common" preservelastmodified="true" verbose="true">
-		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Common">
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Model" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Model">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Persistence_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Persistence/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Persistence" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Persistence">
+				<include name="pom.xml"/>
+				<include name=".*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="delivery_Joao_de_Barro_Services_to_workspace">
+		<sync todir="${WORKSPACE_DIR}/Joao_de_Barro_Services/src" verbose="true">
+			<fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services/src"/>
+		</sync>
+		
+		<copy todir="${WORKSPACE_DIR}/Joao_de_Barro_Services" preservelastmodified="true" verbose="true">
+		    <fileset dir="${PROJETOS_MAVEN_DIR}/Joao_de_Barro/Joao_de_Barro_Lib/Joao_de_Barro_Services">
 				<include name="pom.xml"/>
 				<include name=".*"/>
 			</fileset>
