@@ -77,34 +77,10 @@ public class SqlServerStoredProcedureInsertCoordinator extends AbstractJavaEntit
 					JoaoDeBarroVelocityEngine.getInstance();
 			jbVelocityEngine.putInContext( "java_entity", getJavaEntity() );
 			
-			ClassOpeningGenerator classOpeningGenerator = 
-					new ClassOpeningGenerator(
+			SqlServerStoredProcedureInsertGenerator generator = 
+					new SqlServerStoredProcedureInsertGenerator( 
 							getJavaEntity() );
-			classOpeningGenerator.setSufix( "Dto" );
-			classOpeningGenerator.generate();
-			
-			AttributeDeclarationGenerator adGenerator = 
-					new AttributeDeclarationGenerator( 
-							getJavaEntity() );
-			adGenerator.generate();
-			
-			GetMethodGeneratorHandler getMethodGeneratorHandler =
-					new GetMethodGeneratorHandler();
-			
-			SetMethodGeneratorHandler setMethodGeneratorHandler =
-					new SetMethodGeneratorHandler();
-			
-			JavaAttribute[] javaAttributes = getJavaEntity().getJavaAttributes();
-			
-			for ( JavaAttribute javaAttribute : javaAttributes ) {
-				getMethodGeneratorHandler.generate( javaAttribute );
-				setMethodGeneratorHandler.generate( javaAttribute );
-			}
-			
-			ToStringMethodGenerator toStringMethodGenerator = 
-					new ToStringMethodGenerator( 
-							getJavaEntity() );
-			toStringMethodGenerator.generate();
+			generator.generate();
 			
 			flush();
 		} catch ( IOException e ) {

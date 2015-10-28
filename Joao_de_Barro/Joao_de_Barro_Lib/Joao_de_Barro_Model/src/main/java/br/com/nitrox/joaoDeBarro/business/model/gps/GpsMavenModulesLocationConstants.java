@@ -21,13 +21,14 @@ package br.com.nitrox.joaoDeBarro.business.model.gps;
 				- GPS_Carga_Registro_de_Horas
 				- GPS_Carga_Planilhas_Contagem
 				- GPS_Carga_Solicitacoes
+			- GPS_ETL_Common
 		- GPS_Infrastructure
 		- GPS_Logger
 		- GPS_Test_Logger
 		- GPS_Ambiente
 		- GPS_Common
 		- GPS_Login
-		- GPS_Remedy											// Contï¿½m as classes referentes ao Remedy
+		- GPS_Remedy											// Contém as classes referentes ao Remedy
 	- GPS_Batch_App
 		- GPS_Extracao_Registro_de_Horas_Batch_App
 		- GPS_Extracao_Planilhas_Contagem_PF_Batch_App
@@ -62,7 +63,10 @@ public interface GpsMavenModulesLocationConstants {
 		{ "GPS_Remedy", "GPS/GPS_Lib" },
 		{ "GPS_ETL", "GPS/GPS_Lib" },
 		
+		{ "GPS_ETL_Common", "GPS/GPS_Lib/GPS_ETL" },
 		{ "GPS_Extracao", "GPS/GPS_Lib/GPS_ETL" },
+		{ "GPS_Transformacao", "GPS/GPS_Lib/GPS_ETL" },
+		{ "GPS_Carga", "GPS/GPS_Lib/GPS_ETL" },
 		
 		{ "GPS_Extracao_Common", "GPS/GPS_Lib/GPS_ETL/GPS_Extracao" },
 		{ "GPS_Extracao_Registro_de_Horas", "GPS/GPS_Lib/GPS_ETL/GPS_Extracao" },
@@ -70,15 +74,11 @@ public interface GpsMavenModulesLocationConstants {
 		{ "GPS_Extracao_Solicitacoes_Notes", "GPS/GPS_Lib/GPS_ETL/GPS_Extracao" },
 		{ "GPS_Extracao_Solicitacoes_Remedy", "GPS/GPS_Lib/GPS_ETL/GPS_Extracao" },
 		
-		{ "GPS_Transformacao", "GPS/GPS_Lib/GPS_ETL" },
-		
 		{ "GPS_Transformacao_Common", "GPS/GPS_Lib/GPS_ETL/GPS_Transformacao" },
 		{ "GPS_Transformacao_Registro_de_Horas", "GPS/GPS_Lib/GPS_ETL/GPS_Transformacao" },
 		{ "GPS_Transformacao_Planilhas_Contagem_PF", "GPS/GPS_Lib/GPS_ETL/GPS_Transformacao" },
 		{ "GPS_Transformacao_Solicitacoes_Notes", "GPS/GPS_Lib/GPS_ETL/GPS_Transformacao" },
 		{ "GPS_Transformacao_Solicitacoes_Remedy", "GPS/GPS_Lib/GPS_ETL/GPS_Transformacao" },
-		
-		{ "GPS_Carga", "GPS/GPS_Lib/GPS_ETL" },
 		
 		{ "GPS_Carga_Common", "GPS/GPS_Lib/GPS_ETL/GPS_Carga" },
 		{ "GPS_Carga_Registro_de_Horas", "GPS/GPS_Lib/GPS_ETL/GPS_Carga" },

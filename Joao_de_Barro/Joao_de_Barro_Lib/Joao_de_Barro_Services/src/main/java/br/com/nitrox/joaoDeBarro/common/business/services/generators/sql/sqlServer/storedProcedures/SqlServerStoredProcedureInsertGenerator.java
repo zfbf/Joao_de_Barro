@@ -1,23 +1,18 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.sql.sqlServer.storedProcedures;
 
-import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.AbstractJavaAttributeGenerator;
+import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.AbstractJavaEntityGenerator;
 
 
-public class SqlServerStoredProcedureInsertGenerator extends AbstractJavaAttributeGenerator {
+public class SqlServerStoredProcedureInsertGenerator extends AbstractJavaEntityGenerator {
 	
-	public SqlServerStoredProcedureInsertGenerator( JavaAttribute javaAttribute ) {
-		super( javaAttribute );
-	}
-	
-	
-	public SqlServerStoredProcedureInsertGenerator() {
-		;
+	public SqlServerStoredProcedureInsertGenerator( JavaEntity javaEntity ) {
+		super( javaEntity );
 	}
 	
 	
 	public int getTemplateCode() {
-		return TEMPLATE_COMMON_SET_METHOD;
+		return TEMPLATE_SQL_SQLSERVER_INSERT_STOREDPROCEDURE;
 	}
 	
 }
