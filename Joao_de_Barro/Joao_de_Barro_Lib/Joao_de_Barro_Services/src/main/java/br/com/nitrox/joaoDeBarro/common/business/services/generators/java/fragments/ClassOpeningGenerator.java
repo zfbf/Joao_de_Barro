@@ -54,7 +54,7 @@ public class ClassOpeningGenerator extends AbstractJavaEntityGenerator {
 			context.put( "java_entity", getJavaEntity() );
 			context.put( "prefix", prefix );
 			context.put( "sufix", sufix );
-			runTemplate( getTemplateCode() );
+			runTemplate();
 		} catch ( ResourceNotFoundException e ) {
 			error( methodName, e );
 			throw e;

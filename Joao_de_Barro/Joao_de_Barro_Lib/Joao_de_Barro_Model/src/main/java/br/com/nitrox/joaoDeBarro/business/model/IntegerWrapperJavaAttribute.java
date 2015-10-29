@@ -2,7 +2,7 @@ package br.com.nitrox.joaoDeBarro.business.model;
 
 public class IntegerWrapperJavaAttribute extends AbstractJavaAttribute {
 	
-	public String getJavaAttributeTypeName() {
+	public String getTypeName() {
 		return "Integer";
 	}
 	

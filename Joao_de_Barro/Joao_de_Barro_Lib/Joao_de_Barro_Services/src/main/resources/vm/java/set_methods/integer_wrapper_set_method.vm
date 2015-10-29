@@ -3,12 +3,12 @@
 ##
 	
 	
-	public void set$java_attribute.getClassStyleName()( $java_attribute.getJavaAttributeTypeName() $java_attribute.getAttributeStyleName() ) {
-		this.$java_attribute.getAttributeStyleName() = $java_attribute.getAttributeStyleName();
+	public void set$java_attribute.getNameClassStyle()( $java_attribute.getTypeName() $java_attribute.getNameAttributeStyle() ) {
+		this.$java_attribute.getNameAttributeStyle() = $java_attribute.getNameAttributeStyle();
 	}
 	
 	
-	public void set$java_attribute.getClassStyleName()( int $java_attribute.getAttributeStyleName() ) {
-		this.$java_attribute.getAttributeStyleName() = Integer.valueOf( $java_attribute.getAttributeStyleName() );
+	public void set$java_attribute.getNameClassStyle()( int $java_attribute.getNameAttributeStyle() ) {
+		this.$java_attribute.getNameAttributeStyle() = Integer.valueOf( $java_attribute.getNameAttributeStyle() );
 	}
 ##

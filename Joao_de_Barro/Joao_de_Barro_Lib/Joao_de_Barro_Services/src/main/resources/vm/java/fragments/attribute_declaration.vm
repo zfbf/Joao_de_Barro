@@ -2,6 +2,6 @@
 ##
 ##
 #foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
-	private $java_attribute.getJavaAttributeTypeName() $java_attribute.getAttributeStyleName();
+	private $java_attribute.getTypeName() $java_attribute.getNameAttributeStyle();
 #end
 ##

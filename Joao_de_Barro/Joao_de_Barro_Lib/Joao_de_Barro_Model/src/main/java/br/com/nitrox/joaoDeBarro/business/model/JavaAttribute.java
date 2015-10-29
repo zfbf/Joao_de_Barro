@@ -4,17 +4,17 @@ public interface JavaAttribute {
 	
 	String getName();
 	void setName( String name );
-	String getClassStyleName();
-	String getAttributeStyleName();
+	String getNameClassStyle();
+	String getNameAttributeStyle();
 	
 	String getColumnName();
 	void setColumnName( String columnName );
-	String getColumnClassStyleName();
-	String getColumnAttributeStyleName();
+	String getColumnNameClassStyle();
+	String getColumnNameAttributeStyle();
 	
-	int getJavaAttributeType();
-	void setJavaAttributeType( int javaAttributeType );
-	String getJavaAttributeTypeName();
+	int getType();
+	void setType( int javaAttributeType );
+	String getTypeName();
 	
 	String getDatabaseType();
 	void setDatabaseType( String databaseType );

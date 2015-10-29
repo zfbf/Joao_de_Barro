@@ -1,4 +1,4 @@
 ##
 ##
-public class $prefix$java_entity.getJavaEntityClassStyleName()$sufix {
+public class $prefix${java_entity.getNameClassStyle()}$sufix {
 ##

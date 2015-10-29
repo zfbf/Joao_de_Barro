@@ -31,7 +31,7 @@ public class JavaEntityDaoTest extends AbstractJoaoDeBarroTestLogger {
 		String javaEntityName = "data_staging_hpd_help_desk";
 		JavaEntity javaEntity = javaEntityDao.getJavaEntity( javaEntityName );
 		assertNotNull( javaEntity );
-		assertTrue( javaEntity.getJavaEntityName().equals( javaEntityName ));
+		assertTrue( javaEntity.getName().equals( javaEntityName ));
 		debug( methodName, "javaEntity", javaEntity );
 	}
 	

@@ -13,7 +13,7 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes 
 		if ( entityName != null ) {
 			if ( entityName.equalsIgnoreCase( "data_staging_hpd_help_desk" )) {
 				javaEntity = new JavaEntity();
-				javaEntity.setJavaEntityName( entityName );
+				javaEntity.setName( entityName );
 				javaEntity.setDatabaseTableName( "CAD_REMEDY_HPD_HELP_DESK" );
 				
 				DataStagingHpdHelpDeskJavaAttributeJavaCode javaAttributesHardCode = 

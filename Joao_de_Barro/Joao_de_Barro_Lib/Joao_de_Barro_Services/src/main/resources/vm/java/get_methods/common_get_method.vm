@@ -3,7 +3,7 @@
 ##
 	
 	
-	public $java_attribute.getJavaAttributeTypeName() get$java_attribute.getClassStyleName()() {
-		return this.$java_attribute.getAttributeStyleName();
+	public ${java_attribute.getTypeName()} get${java_attribute.getNameClassStyle()}() {
+		return this.${java_attribute.getNameAttributeStyle()};
 	}
 ##

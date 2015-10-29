@@ -22,13 +22,19 @@ public abstract class AbstractJavaEntityGenerator extends AbstractFragmentGenera
 	}
 	
 	
+	protected void putOtherVariablesInVelocityContext() {
+		;
+	}
+	
+	
 	public void generate() throws ResourceNotFoundException {
 		String methodName = "generate";
 		infoInicioDoMetodo( methodName );
 		
 		try {
 			VelocityContext context = getVelocityContext();
-			context.put( "java_entity", javaEntity );
+			context.put( "java_entity", getJavaEntity() );
+			putOtherVariablesInVelocityContext();
 			runTemplate();
 		} catch ( ResourceNotFoundException e ) {
 			error( methodName, e );

@@ -3,28 +3,28 @@ package br.com.nitrox.joaoDeBarro.business.model;
 import br.com.nitrox.joaoDeBarro.infrastructure.util.NameStyleFormatter;
 
 public class JavaEntity {
-	private String javaEntityName;
+	private String name;
 	private String tableDbName;
 	private JavaAttribute[] javaAttributes;
 	
 	
-	public String getJavaEntityName() {
-		return javaEntityName;
+	public String getName() {
+		return name;
 	}
 	
 	
-	public String getJavaEntityClassStyleName() {
-		return NameStyleFormatter.toClassStyle( javaEntityName );
+	public String getNameClassStyle() {
+		return NameStyleFormatter.toClassStyle( name );
 	}
 	
 	
-	public String getJavaEntityAttributeStyleName() {
-		return NameStyleFormatter.toAttributeStyle( javaEntityName );
+	public String getNameAttributeStyle() {
+		return NameStyleFormatter.toAttributeStyle( name );
 	}
 	
 	
-	public void setJavaEntityName( String javaEntityName ) {
-		this.javaEntityName = javaEntityName;
+	public void setName( String name ) {
+		this.name = name;
 	}
 	
 	
@@ -33,12 +33,12 @@ public class JavaEntity {
 	}
 	
 	
-	public String getTableDbClassStyleName() {
+	public String getTableDbNameClassStyle() {
 		return NameStyleFormatter.toClassStyle( tableDbName );
 	}
 	
 	
-	public String getTableDbAttributeStyleName() {
+	public String getTableDbNameAttributeStyle() {
 		return NameStyleFormatter.toAttributeStyle( tableDbName );
 	}
 	

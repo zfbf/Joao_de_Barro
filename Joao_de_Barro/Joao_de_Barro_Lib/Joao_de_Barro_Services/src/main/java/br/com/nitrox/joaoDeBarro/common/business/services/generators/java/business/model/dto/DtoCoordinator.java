@@ -1,4 +1,4 @@
-package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.dto;
+package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto;
 
 import java.io.IOException;
 

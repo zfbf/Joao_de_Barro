@@ -1,0 +1,44 @@
+##Template de uso geral para declaração de atributos
+##
+##
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+	private $java_attribute.getJavaAttributeTypeName() $java_attribute.getAttributeStyleName();
+#end
+##
+CREATE PROCEDURE ${java_entity.getTableDbName()}_INSERT_SP (
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if( !${java_attribute.isIdentity()} )
+		@${java_attribute.getColumnName()}_p ${java_attribute.getDatabaseType()},
+#end
+#end
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if( ${java_attribute.isIdentity()} )
+		@${java_attribute.getColumnName()}_p ${java_attribute.getDatabaseType()} OUTPUT
+#end
+#end
+) AS
+	SET NOCOUNT ON;
+	BEGIN TRANSACTION;
+	
+	INSERT INTO ${java_entity.getTableDbName()}( 
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if( !${java_attribute.isIdentity()} )
+		${java_attribute.getColumnName()},
+#end
+#end
+	) VALUES ( 
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if( !${java_attribute.isIdentity()} )
+		@${java_attribute.getColumnName()}_p,
+#end
+#end
+	);
+
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if( ${java_attribute.isIdentity()} )
+	SELECT @${java_attribute.getColumnName()}_p = @@IDENTITY;
+#end
+#end
+	COMMIT TRANSACTION;
+GO;
+##

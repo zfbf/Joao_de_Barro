@@ -1,7 +1,7 @@
-package br.com.nitrox.joaoDeBarro.common.business.generators.java.dto;
+package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.dto;
 
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.dto.DtoCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto.DtoCoordinator;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.JavaEntityJavaCodeDao;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.serviceLocator.Log4jConfiguratorServiceLocator;

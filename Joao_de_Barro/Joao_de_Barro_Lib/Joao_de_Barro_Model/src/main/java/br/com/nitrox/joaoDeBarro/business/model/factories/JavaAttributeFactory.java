@@ -48,7 +48,7 @@ public class JavaAttributeFactory implements JavaAttributeTypes {
 		
 		javaAttribute.setName( name );
 		javaAttribute.setColumnName( columnName );
-		javaAttribute.setJavaAttributeType( javaAttributeType );
+		javaAttribute.setType( javaAttributeType );
 		javaAttribute.setDatabaseType( databaseType );
 		javaAttribute.setAllowNull( allowNull );
 		javaAttribute.setIdentity( isIdentity );

@@ -3,8 +3,8 @@
 ##
 	
 	
-	public Date get${java_attribute.getClassStyleName()}() {
-		return ( this.${java_attribute.getAttributeStyleName()} == null ?
-				null : new Date( this.${java_attribute.getAttributeStyleName()}.getTime() ));
+	public Date get${java_attribute.getNameClassStyle()}() {
+		return ( this.${java_attribute.getNameAttributeStyle()} == null ?
+				null : new Date( this.${java_attribute.getNameAttributeStyle()}.getTime() ));
 	}
 ##

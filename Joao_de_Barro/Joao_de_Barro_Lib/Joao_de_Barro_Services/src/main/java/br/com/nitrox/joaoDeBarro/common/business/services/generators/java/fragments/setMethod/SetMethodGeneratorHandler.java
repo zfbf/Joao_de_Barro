@@ -28,7 +28,7 @@ public class SetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 		JavaAttributeVelocityGenerator generator = null;
 		
 		if ( javaAttribute != null ) {
-			switch ( javaAttribute.getJavaAttributeType() ) {
+			switch ( javaAttribute.getType() ) {
 			case JAVA_ATTRIBUTE_TYPE_FLOAT_WRAPPER:
 				generator = floatWrapperSetMethodGenerator; 
 				break;

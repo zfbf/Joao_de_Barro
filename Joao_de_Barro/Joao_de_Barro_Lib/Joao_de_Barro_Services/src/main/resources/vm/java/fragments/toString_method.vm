@@ -9,15 +9,15 @@
 		sb.append( this.getClass().getName() );
 		DateFormat df = new SimpleDateFormat( "dd/MM/yyyy" );
 #foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
-#if ( $java_attribute.getJavaAttributeType() == $ATTRIBUTE_TYPE_DATE )
+#if ( $java_attribute.getType() == $ATTRIBUTE_TYPE_DATE )
 		
-		if ( get${java_attribute.getClassStyleName()}() != null ) {
-			sb.append( "\n\t$java_attribute.getAttributeStyleName() = " ).append( df.format( get${java_attribute.getClassStyleName()}() ));
+		if ( get${java_attribute.getNameClassStyle()}() != null ) {
+			sb.append( "\n\t$java_attribute.getNameAttributeStyle() = " ).append( df.format( get${java_attribute.getNameClassStyle()}() ));
 		} else {
-			sb.append( "\n\t$java_attribute.getAttributeStyleName() = " ).append( get${java_attribute.getClassStyleName()}() );
+			sb.append( "\n\t$java_attribute.getNameAttributeStyle() = " ).append( get${java_attribute.getNameClassStyle()}() );
 		}
 #else
-		sb.append( "\n\t${java_attribute.getAttributeStyleName()} = " ).append( get${java_attribute.getClassStyleName()}() );
+		sb.append( "\n\t${java_attribute.getNameAttributeStyle()} = " ).append( get${java_attribute.getNameClassStyle()}() );
 #end
 #end
 		return sb.toString();

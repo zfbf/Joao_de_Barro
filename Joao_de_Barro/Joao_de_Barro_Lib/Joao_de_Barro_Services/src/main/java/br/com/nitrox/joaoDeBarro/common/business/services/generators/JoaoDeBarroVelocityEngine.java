@@ -189,6 +189,22 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 			templateName = "sql/sqlServer/stored_procedures/insert.vm";
 			break;
 			
+		case TEMPLATE_DAO_ANSISQL99_CREATE_METHOD:
+			templateName = "java/persistence/dao/ansiSql99/create_method.vm";
+			break;
+			
+		case TEMPLATE_DAO_ANSISQL99_RETRIEVE_METHOD:
+			templateName = "java/persistence/dao/ansiSql99/retrieve_method.vm";
+			break;
+			
+		case TEMPLATE_DAO_ANSISQL99_TRUNCATE_METHOD:
+			templateName = "java/persistence/dao/ansiSql99/truncate_method.vm";
+			break;
+			
+		case TEMPLATE_ATTRIBUTE_CLONE:
+			templateName = "java/fragments/attribute_clone.vm";
+			break;
+			
 		default:
 			break;
 		}

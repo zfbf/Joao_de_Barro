@@ -23,12 +23,12 @@ public abstract class AbstractJavaAttribute implements JavaAttribute {
 	}
 	
 	
-	public String getAttributeStyleName() {
+	public String getNameAttributeStyle() {
 		return NameStyleFormatter.toAttributeStyle( name );
 	}
 	
 	
-	public String getClassStyleName() {
+	public String getNameClassStyle() {
 		return NameStyleFormatter.toClassStyle( name );
 	}
 	
@@ -43,22 +43,22 @@ public abstract class AbstractJavaAttribute implements JavaAttribute {
 	}
 	
 	
-	public String getColumnAttributeStyleName() {
+	public String getColumnNameAttributeStyle() {
 		return NameStyleFormatter.toAttributeStyle( columnName );
 	}
 	
 	
-	public String getColumnClassStyleName() {
+	public String getColumnNameClassStyle() {
 		return NameStyleFormatter.toClassStyle( columnName );
 	}
 	
 	
-	public int getJavaAttributeType() {
+	public int getType() {
 		return javaAttributeType;
 	}
 	
 	
-	public void setJavaAttributeType( int javaAttributeType ) {
+	public void setType( int javaAttributeType ) {
 		this.javaAttributeType = javaAttributeType;
 	}
 	

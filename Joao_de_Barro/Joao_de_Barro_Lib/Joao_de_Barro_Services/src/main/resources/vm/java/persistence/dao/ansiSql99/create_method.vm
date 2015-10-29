@@ -7,11 +7,11 @@
 ##
 	
 	
-	public void create( ${javaEntity.getNameClassStyle()}Dto[] ${javaEntity.getNameAttributeStyle()}Array ) {
+	public void create( ${java_entity.getNameClassStyle()}Dto[] ${java_entity.getNameAttributeStyle()}Array ) {
 		String methodName = "create";
 		debugInicioDoMetodo( methodName );
 		
-		${javaEntity.getNameClassStyle()}Dto ${javaEntity.getNameAttributeStyle()} = null;
+		${java_entity.getNameClassStyle()}Dto ${java_entity.getNameAttributeStyle()} = null;
 		PreparedStatement pstm = null;
 		String sql = null;
 		int parameterIndex = 1;
@@ -20,53 +20,50 @@
 			sql = sqlServiceLocator.getSql( "create" );
 			pstm = buildPreparedStatement( sql );
 			
-			for ( int i = 0; i < ${javaEntity.getNameAttributeStyle()}Array.length; i++ ) {
-				${javaEntity.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}Array[i];
+			for ( int i = 0; i < ${java_entity.getNameAttributeStyle()}Array.length; i++ ) {
+				${java_entity.getNameAttributeStyle()} = ${java_entity.getNameAttributeStyle()}Array[i];
 				parameterIndex = 1;
-#foreach( $metaAttribute in $metaAttributes )
-#if ( $metaAttribute.getAttributeType() == $ATTRIBUTE_TYPE_DATE ) 
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_DATE ) 
 				
-				Date ${metaAttribute.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}.get${metaAttribute.getNameClassStyle()}();
+				Date ${java_attribute.getNameAttributeStyle()} = ${java_entity.getNameAttributeStyle()}.get${java_attribute.getNameClassStyle()}();
 				
-				if ( ${metaAttribute.getNameAttributeStyle()} != null ) {
-					pstm.setDate( parameterIndex++, new java.sql.Date( ${metaAttribute.getNameAttributeStyle()}.getTime() ));
+				if ( ${java_attribute.getNameAttributeStyle()} != null ) {
+					pstm.setDate( parameterIndex++, new java.sql.Date( ${java_attribute.getNameAttributeStyle()}.getTime() ));
 				} else {
 					pstm.setNull( parameterIndex++, Types.DATE );
 				}
-#elseif ( $metaAttribute.getAttributeType() == $ATTRIBUTE_TYPE_INTEGER )
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_INTEGER )
+#if (!${java_attribute.isIdentity()})
 				
-				Integer ${metaAttribute.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}.get${metaAttribute.getNameClassStyle()}();
+				Integer ${java_attribute.getNameAttributeStyle()} = ${java_entity.getNameAttributeStyle()}.get${java_attribute.getNameClassStyle()}();
 				
-				if ( ${metaAttribute.getNameAttributeStyle()} != null ) {
-					pstm.setInt( parameterIndex++, ${metaAttribute.getNameAttributeStyle()}.intValue() );
+				if ( ${java_attribute.getNameAttributeStyle()} != null ) {
+					pstm.setInt( parameterIndex++, ${java_attribute.getNameAttributeStyle()}.intValue() );
 				} else {
 					pstm.setNull( parameterIndex++, Types.INTEGER );
 				}
-#elseif ( $metaAttribute.getAttributeType() == $ATTRIBUTE_TYPE_STRING )
+#end
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_STRING )
 				
-				String ${metaAttribute.getNameAttributeStyle()} = ${javaEntity.getNameAttributeStyle()}.get${metaAttribute.getNameClassStyle()}();
+				String ${java_attribute.getNameAttributeStyle()} = ${java_entity.getNameAttributeStyle()}.get${java_attribute.getNameClassStyle()}();
 				
-				if ( ${metaAttribute.getNameAttributeStyle()} != null ) {
-					pstm.setString( parameterIndex++, ${metaAttribute.getNameAttributeStyle()} );
+				if ( ${java_attribute.getNameAttributeStyle()} != null ) {
+					pstm.setString( parameterIndex++, ${java_attribute.getNameAttributeStyle()} );
 				} else {
 					pstm.setNull( parameterIndex++, Types.CHAR );
 				}
 #else
 				
-				// $metaAttribute.getTypeName() ${metaAttribute.getNameAttributeStyle()}
+				// $java_attribute.getTypeName() ${java_attribute.getNameAttributeStyle()}
 #end ##bloco if
 #end ## bloco foreach
 				
 				int nrAtualizacoes = pstm.executeUpdate();
-				
-				if ( DEBUG ) {
-					debug( methodName, "nrAtualiacoes", nrAtualizacoes );
-					debug( methodName, "${javaEntity.getNameAttributeStyle()}.get${metaAttributes.get(0).getNameClassStyle()}()", 
-							${javaEntity.getNameAttributeStyle()}.get${metaAttributes.get(0).getNameClassStyle()}() );
-				}
+				debug( methodName, "nrAtualiacoes", nrAtualizacoes );
 			}
 		} catch ( ClassNotFoundException e ) {
-			String message = "Verificar se a fonte de dados Microsoft Access ODBC esta corretamente configurada.";
+			String message = "Problemas com o driver JDBC";
 			warn( methodName, message );
 			error( methodName, e );
 		} catch ( SQLException e ) {
