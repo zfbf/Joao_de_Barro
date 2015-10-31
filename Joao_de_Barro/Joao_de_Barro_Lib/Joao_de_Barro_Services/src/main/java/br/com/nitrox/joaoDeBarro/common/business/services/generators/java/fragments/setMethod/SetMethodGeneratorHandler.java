@@ -1,5 +1,7 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.setMethod;
 
+import java.io.Writer;
+
 import org.apache.velocity.exception.ResourceNotFoundException;
 
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
@@ -16,10 +18,15 @@ public class SetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 	
 	public SetMethodGeneratorHandler() {
 		commonSetMethodGenerator = new CommonSetMethodGenerator();
-		
 		floatWrapperSetMethodGenerator = new FloatWrapperSetMethodGenerator();
-		
 		integerWrapperSetMethodGenerator = new IntegerWrapperSetMethodGenerator();
+	}
+	
+	
+	public void setWriter( Writer writer ) {
+		commonSetMethodGenerator.setWriter( writer );
+		floatWrapperSetMethodGenerator.setWriter( writer );
+		integerWrapperSetMethodGenerator.setWriter( writer );
 	}
 	
 	

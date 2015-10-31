@@ -1,5 +1,7 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.getMethods;
 
+import java.io.Writer;
+
 import org.apache.velocity.exception.ResourceNotFoundException;
 
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
@@ -15,8 +17,13 @@ public class GetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 	
 	public GetMethodGeneratorHandler() {
 		commonGetMethodGenerator = new CommonGetMethodGenerator();
-		
 		dateGetMethodGenerator = new DateGetMethodGenerator();
+	}
+	
+	
+	public void setWriter( Writer writer ) {
+		commonGetMethodGenerator.setWriter( writer );
+		dateGetMethodGenerator.setWriter( writer );
 	}
 	
 	

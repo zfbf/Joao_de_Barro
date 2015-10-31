@@ -1,5 +1,8 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.updateFromWorkspace;
 
+import java.io.File;
+
+import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityFragmentGenerator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.AbstractMavenModuleAntFileCoordinator;
 
@@ -11,6 +14,14 @@ public class UpdateFromWorkspaceCoordinator extends AbstractMavenModuleAntFileCo
 	public VelocityFragmentGenerator getVelocityFragmentGenerator() {
 		return new UpdateFromWorkspaceGenerator( 
 				getMavenModules() );
+	}
+	
+	
+	public File getArtifactParentDir() {
+		String workDir = Ambiente.getInstance().getWorkDir();
+		String artifactDir = workDir + "/out/maven/update_from_workspace";
+		File file = new File( artifactDir );
+		return file;
 	}
 	
 }

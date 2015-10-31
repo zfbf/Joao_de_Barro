@@ -1,19 +1,15 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.sql.sqlServer.storedProcedures;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 
-import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
+import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarroVelocityConstants;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarroVelocityEngine;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.AbstractJavaEntityCoordinator;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.AttributeDeclarationGenerator;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.ClassOpeningGenerator;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.ToStringMethodGenerator;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.getMethods.GetMethodGeneratorHandler;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.setMethod.SetMethodGeneratorHandler;
 
 /*
 		CREATE PROCEDURE ##ctl_carga_gps_insert_sp (
@@ -89,6 +85,20 @@ public class SqlServerStoredProcedureInsertCoordinator extends AbstractJavaEntit
 			error( methodName, e );
 			throw e;
 		}
+	}
+	
+	
+	public File getArtifactParentDir() {
+		String workDir = Ambiente.getInstance().getWorkDir();
+		String artifactDir = workDir + "/out/sql/storedProcedures";
+		File file = new File( artifactDir );
+		return file;
+	}
+	
+	
+	public String getArtifactName() {
+		String artifactName = getJavaEntity().getTableDbName() + "_INSERT_SP";
+		return artifactName;
 	}
 	
 }

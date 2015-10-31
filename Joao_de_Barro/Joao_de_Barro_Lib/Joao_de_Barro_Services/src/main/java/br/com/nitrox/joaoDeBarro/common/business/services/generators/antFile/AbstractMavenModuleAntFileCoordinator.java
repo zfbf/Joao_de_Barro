@@ -43,6 +43,11 @@ public abstract class AbstractMavenModuleAntFileCoordinator extends AbstractGene
 	public abstract VelocityFragmentGenerator getVelocityFragmentGenerator();
 	
 	
+	public String getArtifactName() {
+		return "build.xml";
+	}
+	
+	
 	public void generate() throws ResourceNotFoundException {
 		String methodName = "generate";
 		infoInicioDoMetodo( methodName );

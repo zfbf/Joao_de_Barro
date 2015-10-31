@@ -51,7 +51,26 @@ public class DtoCoordinatorTest extends AbstractJoaoDeBarroTestLogger {
 		boolean exceptionHasBeenLaunched = false;
 		
 		try {
-			coordinator.generate();	
+			coordinator.generate();
+		} catch ( Exception e ) {
+			error( methodName, e );
+			exceptionHasBeenLaunched = true;
+		}
+		
+		assertFalse( exceptionHasBeenLaunched );
+	}
+	
+	
+	public void testSave() {
+		String methodName = "testSave";
+		debugInicioDoMetodo( methodName );
+		boolean exceptionHasBeenLaunched = false;
+		
+		try {
+			coordinator.resetBuffer();
+			coordinator.generate();
+			String content = coordinator.getWriter().toString();
+			coordinator.save( content );
 		} catch ( Exception e ) {
 			error( methodName, e );
 			exceptionHasBeenLaunched = true;

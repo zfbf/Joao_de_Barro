@@ -1,8 +1,7 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Properties;
@@ -42,8 +41,12 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 	
 	
 	private void initWriter() {
+		/*
 		this.writer = new BufferedWriter( 
 				new OutputStreamWriter( System.out ));
+		 */
+		
+		this.writer = new StringWriter();
 	}
 	
 	
@@ -63,6 +66,11 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 	
 	public void setWriter( Writer writer ) {
 		this.writer = writer;
+	}
+	
+	
+	public void resetWriter() {
+		this.writer = new StringWriter();
 	}
 	
 	

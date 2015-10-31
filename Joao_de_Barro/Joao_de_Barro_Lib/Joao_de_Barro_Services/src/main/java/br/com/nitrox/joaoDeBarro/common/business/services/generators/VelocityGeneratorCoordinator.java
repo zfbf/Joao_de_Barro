@@ -10,5 +10,8 @@ public interface VelocityGeneratorCoordinator extends VelocityGenerator {
 	void print() throws IOException;
 	void flush() throws IOException;
 	void generate() throws ResourceNotFoundException;
+	void save() throws IOException;
+	void save( String content ) throws IOException;
+	void resetBuffer();
 	
 }

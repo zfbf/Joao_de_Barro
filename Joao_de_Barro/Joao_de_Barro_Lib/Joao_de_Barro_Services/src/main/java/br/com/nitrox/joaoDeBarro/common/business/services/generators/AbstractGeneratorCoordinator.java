@@ -1,5 +1,7 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -27,6 +29,10 @@ public abstract class AbstractGeneratorCoordinator extends AbstractJoaoDeBarroLo
 	}
 	
 	
+	public abstract File getArtifactParentDir();
+	public abstract String getArtifactName();
+	
+	
 	public void print() throws IOException {
 		String methodName = "print";
 		debugInicioDoMetodo( methodName );
@@ -38,6 +44,38 @@ public abstract class AbstractGeneratorCoordinator extends AbstractJoaoDeBarroLo
 		} else {
 			warn( methodName, "artifact is null" );
 		}
+	}
+	
+	
+	public void save() throws IOException {
+		String content = getWriter().toString();
+		save( content );
+	}
+	
+	
+	public void save( String content ) throws IOException {
+		String methodName = "save";
+		debugInicioDoMetodo( methodName );
+		
+		File file = new File( getArtifactParentDir(), getArtifactName() );
+		
+		if ( !file.exists() ) {
+			file.getParentFile().mkdirs();
+		}
+		
+		FileWriter fw = new FileWriter( file );
+		fw.write( content );
+		fw.flush();
+		fw.close();
+		
+		String message = "Artefato " + getArtifactName() + " gerado com " +
+				"sucesso em " + getArtifactParentDir().getName();
+		info( methodName, message );
+	}
+	
+	
+	public void resetBuffer() {
+		jbVelocityEngine.resetWriter();
 	}
 	
 	

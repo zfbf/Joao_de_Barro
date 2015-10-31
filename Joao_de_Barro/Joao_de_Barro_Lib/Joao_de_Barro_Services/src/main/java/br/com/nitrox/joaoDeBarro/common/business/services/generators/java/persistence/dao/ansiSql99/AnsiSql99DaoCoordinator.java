@@ -1,9 +1,11 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 
+import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarroVelocityConstants;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarroVelocityEngine;
@@ -48,6 +50,20 @@ public class AnsiSql99DaoCoordinator extends AbstractJavaEntityCoordinator
 			error( methodName, e );
 			throw e;
 		}
+	}
+	
+	
+	public File getArtifactParentDir() {
+		String workDir = Ambiente.getInstance().getWorkDir();
+		String artifactDir = workDir + "/out/java/persistence/dao/ansiSql99";
+		File file = new File( artifactDir );
+		return file;
+	}
+	
+	
+	public String getArtifactName() {
+		String artifactName = getJavaEntity().getNameClassStyle() + "AnsiSql99Dao";
+		return artifactName;
 	}
 	
 }

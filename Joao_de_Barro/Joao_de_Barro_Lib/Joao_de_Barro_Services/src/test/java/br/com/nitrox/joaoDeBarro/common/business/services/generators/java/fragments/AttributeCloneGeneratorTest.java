@@ -3,12 +3,13 @@ package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragm
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarroVelocityConstants;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.JavaEntityConstants;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.JavaEntityJavaCodeDao;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.serviceLocator.Log4jConfiguratorServiceLocator;
 import br.com.nitrox.joaoDeBarro.testLogger.infrastructure.log4j.AbstractJoaoDeBarroTestLogger;
 
 public class AttributeCloneGeneratorTest extends AbstractJoaoDeBarroTestLogger
-		implements JoaoDeBarroVelocityConstants {
+		implements JoaoDeBarroVelocityConstants, JavaEntityConstants {
 	private AttributeCloneGenerator attributeCloneGenerator;
 	
 	public AttributeCloneGeneratorTest() {

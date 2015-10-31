@@ -4,7 +4,7 @@ import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttributeTypes;
 import br.com.nitrox.joaoDeBarro.business.model.factories.JavaAttributeFactory;
 
-public class DataStagingHpdAuditLogSystemJavaAttributeJavaCode 
+public class DataStagingHpdAuditLogSystemJavaAttributesJavaCode 
 		implements JavaAttributeTypes, JavaAttributeJavaCodeUnit {
 	
 	public JavaAttribute[] getJavaAttributes() {

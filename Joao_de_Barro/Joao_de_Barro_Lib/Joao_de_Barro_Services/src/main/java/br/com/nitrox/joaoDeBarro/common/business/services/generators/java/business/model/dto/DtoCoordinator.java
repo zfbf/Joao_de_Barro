@@ -1,9 +1,11 @@
 package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 
+import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarroVelocityConstants;
@@ -19,6 +21,11 @@ import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragme
 
 public class DtoCoordinator extends AbstractJavaEntityCoordinator
 		implements JoaoDeBarroVelocityConstants {
+	
+	public DtoCoordinator() {
+		;
+	}
+	
 	
 	public DtoCoordinator( JavaEntity javaEntity ) {
 		super( javaEntity );
@@ -38,18 +45,22 @@ public class DtoCoordinator extends AbstractJavaEntityCoordinator
 					new ClassOpeningGenerator(
 							getJavaEntity() );
 			classOpeningGenerator.setSufix( "Dto" );
+			classOpeningGenerator.setWriter( getWriter() );
 			classOpeningGenerator.generate();
 			
 			AttributeDeclarationGenerator adGenerator = 
 					new AttributeDeclarationGenerator( 
 							getJavaEntity() );
+			adGenerator.setWriter( getWriter() );
 			adGenerator.generate();
 			
 			GetMethodGeneratorHandler getMethodGeneratorHandler =
 					new GetMethodGeneratorHandler();
+			getMethodGeneratorHandler.setWriter( getWriter() );
 			
 			SetMethodGeneratorHandler setMethodGeneratorHandler =
 					new SetMethodGeneratorHandler();
+			setMethodGeneratorHandler.setWriter( getWriter() );
 			
 			JavaAttribute[] javaAttributes = getJavaEntity().getJavaAttributes();
 			
@@ -61,6 +72,7 @@ public class DtoCoordinator extends AbstractJavaEntityCoordinator
 			ToStringMethodGenerator toStringMethodGenerator = 
 					new ToStringMethodGenerator( 
 							getJavaEntity() );
+			toStringMethodGenerator.setWriter( getWriter() );
 			toStringMethodGenerator.generate();
 			
 			flush();
@@ -70,6 +82,20 @@ public class DtoCoordinator extends AbstractJavaEntityCoordinator
 			error( methodName, e );
 			throw e;
 		}
+	}
+	
+	
+	public File getArtifactParentDir() {
+		String workDir = Ambiente.getInstance().getWorkDir();
+		String artifactDir = workDir + "/out/java/business/model";
+		File file = new File( artifactDir );
+		return file;
+	}
+	
+	
+	public String getArtifactName() {
+		String artifactName = getJavaEntity().getNameClassStyle() + "Dto.java";
+		return artifactName;
 	}
 	
 }

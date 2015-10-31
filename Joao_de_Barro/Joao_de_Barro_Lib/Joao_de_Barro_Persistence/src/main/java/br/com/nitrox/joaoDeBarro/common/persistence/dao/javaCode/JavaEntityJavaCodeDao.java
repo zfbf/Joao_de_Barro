@@ -3,7 +3,8 @@ package br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttributeTypes;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
-import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdHelpDeskJavaAttributeJavaCode;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdHelpDeskJavaAttributesJavaCode;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.SolicitacaoJavaAttributesJavaCode;
 
 public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes {
 	
@@ -16,14 +17,32 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes 
 				javaEntity.setName( entityName );
 				javaEntity.setDatabaseTableName( "CAD_REMEDY_HPD_HELP_DESK" );
 				
-				DataStagingHpdHelpDeskJavaAttributeJavaCode javaAttributesHardCode = 
-						new DataStagingHpdHelpDeskJavaAttributeJavaCode();
+				DataStagingHpdHelpDeskJavaAttributesJavaCode javaAttributesHardCode = 
+						new DataStagingHpdHelpDeskJavaAttributesJavaCode();
+				javaEntity.setJavaAttributes( javaAttributesHardCode.
+						getJavaAttributes() );
+			} else if ( entityName.equalsIgnoreCase( "solicitacao" )) {
+				javaEntity = new JavaEntity();
+				javaEntity.setName( entityName );
+				javaEntity.setDatabaseTableName( "CAD_SOLIC_TI" );
+				
+				SolicitacaoJavaAttributesJavaCode javaAttributesHardCode = 
+						new SolicitacaoJavaAttributesJavaCode();
 				javaEntity.setJavaAttributes( javaAttributesHardCode.
 						getJavaAttributes() );
 			}
 		}
 		
 		return javaEntity;
+	}
+	
+	
+	public JavaEntity[] getJavaEntities() {
+		JavaEntity[] javaEntities = new JavaEntity[] {
+				getJavaEntity( "solicitacao" )
+		};
+		
+		return javaEntities;
 	}
 	
 }

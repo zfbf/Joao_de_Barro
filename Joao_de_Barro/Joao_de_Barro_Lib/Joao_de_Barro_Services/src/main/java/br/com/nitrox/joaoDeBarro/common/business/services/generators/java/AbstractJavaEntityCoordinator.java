@@ -11,6 +11,11 @@ public abstract class AbstractJavaEntityCoordinator extends AbstractGeneratorCoo
 		implements VelocityGeneratorCoordinator, MavenModulesConstants {
 	private JavaEntity javaEntity;
 	
+	public AbstractJavaEntityCoordinator() {
+		;
+	}
+	
+	
 	public AbstractJavaEntityCoordinator( JavaEntity javaEntity ) {
 		this.javaEntity = javaEntity;
 	}
@@ -18,6 +23,11 @@ public abstract class AbstractJavaEntityCoordinator extends AbstractGeneratorCoo
 	
 	public JavaEntity getJavaEntity() {
 		return javaEntity;
+	}
+	
+	
+	public void setJavaEntity( JavaEntity javaEntity ) {
+		this.javaEntity = javaEntity;
 	}
 	
 }

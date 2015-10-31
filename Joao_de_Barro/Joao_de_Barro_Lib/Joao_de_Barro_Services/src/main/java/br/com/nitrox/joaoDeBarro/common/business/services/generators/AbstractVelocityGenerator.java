@@ -13,6 +13,7 @@ import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.AbstractJoaoDeBarro
 public abstract class AbstractVelocityGenerator extends AbstractJoaoDeBarroLogger
 		implements VelocityGenerator, JoaoDeBarroVelocityConstants {
 	private JoaoDeBarroVelocityEngine jbVelocityEngine;
+	private Writer writer;
 	
 	public AbstractVelocityGenerator() {
 		jbVelocityEngine = JoaoDeBarroVelocityEngine.getInstance();
@@ -20,7 +21,16 @@ public abstract class AbstractVelocityGenerator extends AbstractJoaoDeBarroLogge
 	
 	
 	public Writer getWriter() {
-		return jbVelocityEngine.getWriter();
+		if ( writer == null ) {
+			setWriter( jbVelocityEngine.getWriter() );
+		}
+		
+		return writer;
+	}
+	
+	
+	public void setWriter( Writer writer ) {
+		this.writer = writer;
 	}
 	
 	
