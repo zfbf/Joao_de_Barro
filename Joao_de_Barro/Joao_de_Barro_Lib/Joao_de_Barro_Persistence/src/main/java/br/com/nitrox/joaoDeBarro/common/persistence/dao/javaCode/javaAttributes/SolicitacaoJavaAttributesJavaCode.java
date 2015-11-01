@@ -118,23 +118,33 @@ public class SolicitacaoJavaAttributesJavaCode
 						true,
 						false,
 						false,
-						null ),						
+						null ),
+						
+				JavaAttributeFactory.build(
+						"data_entrega",
+						"dat_entrg",
+						JAVA_ATTRIBUTE_TYPE_DATE,
+						"datetime",
+						true,
+						false,
+						false,
+						null ),
+						
+				JavaAttributeFactory.build(
+						"data_fechamento",
+						"dat_fechmnt",
+						JAVA_ATTRIBUTE_TYPE_DATE,
+						"datetime",
+						true,
+						false,
+						false,
+						null ),
 						
 				JavaAttributeFactory.build(
 						"login_gerente",
 						"nom_login_ger_resp_exec",
 						JAVA_ATTRIBUTE_TYPE_STRING,
 						"VARCHAR(16)",
-						true,
-						false,
-						false,
-						null ),
-
-				JavaAttributeFactory.build(
-						"data_fechamento",
-						"dat_fechmnt",
-						JAVA_ATTRIBUTE_TYPE_DATE,
-						"datetime",
 						true,
 						false,
 						false,
@@ -175,16 +185,6 @@ public class SolicitacaoJavaAttributesJavaCode
 						"nom_prdt_ti",
 						JAVA_ATTRIBUTE_TYPE_STRING,
 						"VARCHAR(128)",
-						true,
-						false,
-						false,
-						null ),
-						
-				JavaAttributeFactory.build(
-						"data_entrega",
-						"dat_entrg",
-						JAVA_ATTRIBUTE_TYPE_DATE,
-						"datetime",
 						true,
 						false,
 						false,

@@ -8,6 +8,7 @@ import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.AbstractJoaoDeBarro
 public class JavaEntityServiceLocator extends AbstractJoaoDeBarroLogger {
 	private static JavaEntityServiceLocator instance;
 	private JavaEntityDao javaEntityDao;
+	private JavaEntity[] javaEntities;
 	
 	private JavaEntityServiceLocator() {
 		this.javaEntityDao = JavaEntityDaoFactory.build();
@@ -24,7 +25,10 @@ public class JavaEntityServiceLocator extends AbstractJoaoDeBarroLogger {
 	
 	
 	public JavaEntity[] getJavaEntities() {
-		JavaEntity[] javaEntities = javaEntityDao.getJavaEntities();
+		if ( javaEntities == null ) {
+			javaEntities = javaEntityDao.getJavaEntities();	
+		}
+		
 		return javaEntities;
 	}
 	

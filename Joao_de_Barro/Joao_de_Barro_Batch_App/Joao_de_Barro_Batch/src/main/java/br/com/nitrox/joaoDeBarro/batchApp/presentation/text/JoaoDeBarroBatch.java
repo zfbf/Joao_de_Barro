@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto.DtoCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.AnsiSql99DaoCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.serviceLocators.JavaEntityServiceLocator;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.AbstractStaticJoaoDeBarroLogger;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.configurator.Log4jConfigurator;
@@ -34,6 +35,7 @@ public class JoaoDeBarroBatch extends AbstractStaticJoaoDeBarroLogger {
 			
 			if ( ambiente.isOk() ) {
 				generateDtoArtifacts();
+				generateAnsiSql99DaoArtifacts();
 			} else {
 				warnAmbienteNaoConfigurado( CLASS_NAME, methodName );
 			}
@@ -66,6 +68,22 @@ public class JoaoDeBarroBatch extends AbstractStaticJoaoDeBarroLogger {
 			dtoCoordinator.resetBuffer();
 			dtoCoordinator.generate();
 			dtoCoordinator.save();
+		}
+	}
+	
+	
+	private static void generateAnsiSql99DaoArtifacts() throws IOException {
+		String methodName = "generateAnsiSql99DaoArtifacts";
+		debugInicioDoMetodo( CLASS_NAME, methodName );
+		
+		AnsiSql99DaoCoordinator daoCoordinator = new AnsiSql99DaoCoordinator();
+		JavaEntity[] javaEntities = getJavaEntities();
+		
+		for ( JavaEntity javaEntity : javaEntities ) {
+			daoCoordinator.setJavaEntity( javaEntity );
+			daoCoordinator.resetBuffer();
+			daoCoordinator.generate();
+			daoCoordinator.save();
 		}
 	}
 	

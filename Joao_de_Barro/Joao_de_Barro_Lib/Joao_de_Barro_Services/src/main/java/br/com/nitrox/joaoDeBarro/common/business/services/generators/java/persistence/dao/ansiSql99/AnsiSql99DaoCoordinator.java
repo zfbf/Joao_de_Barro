@@ -12,11 +12,17 @@ import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarro
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.AbstractJavaEntityCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.ClassOpeningGenerator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoCreateMethodGenerator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoUpdateMethodGenerator;
 
 
 
 public class AnsiSql99DaoCoordinator extends AbstractJavaEntityCoordinator
 		implements JoaoDeBarroVelocityConstants {
+	
+	public AnsiSql99DaoCoordinator() {
+		;
+	}
+	
 	
 	public AnsiSql99DaoCoordinator( JavaEntity javaEntity ) {
 		super( javaEntity );
@@ -35,13 +41,18 @@ public class AnsiSql99DaoCoordinator extends AbstractJavaEntityCoordinator
 			ClassOpeningGenerator classOpeningGenerator = 
 					new ClassOpeningGenerator(
 							getJavaEntity() );
-			classOpeningGenerator.setSufix( "SqlServerDao" );
+			classOpeningGenerator.setSufix( "AnsiSql99Dao" );
 			classOpeningGenerator.generate();
 			
 			AnsiSql99DaoCreateMethodGenerator createMethodGenerator = 
 					new AnsiSql99DaoCreateMethodGenerator( 
 							getJavaEntity() );
 			createMethodGenerator.generate();
+			
+			AnsiSql99DaoUpdateMethodGenerator updateMethodGenerator = 
+					new AnsiSql99DaoUpdateMethodGenerator( 
+							getJavaEntity() );
+			updateMethodGenerator.generate();
 			
 			flush();
 		} catch ( IOException e ) {

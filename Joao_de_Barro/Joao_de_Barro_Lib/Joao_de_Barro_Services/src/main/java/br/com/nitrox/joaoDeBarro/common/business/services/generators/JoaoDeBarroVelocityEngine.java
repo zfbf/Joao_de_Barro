@@ -201,6 +201,10 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 			templateName = "java/persistence/dao/ansiSql99/create_method.vm";
 			break;
 			
+		case TEMPLATE_DAO_ANSISQL99_UPDATE_METHOD:
+			templateName = "java/persistence/dao/ansiSql99/update_method.vm";
+			break;
+			
 		case TEMPLATE_DAO_ANSISQL99_RETRIEVE_METHOD:
 			templateName = "java/persistence/dao/ansiSql99/retrieve_method.vm";
 			break;
