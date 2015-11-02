@@ -39,6 +39,7 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes 
 	
 	public JavaEntity[] getJavaEntities() {
 		JavaEntity[] javaEntities = new JavaEntity[] {
+				getJavaEntity( "data_staging_hpd_help_desk" ),
 				getJavaEntity( "solicitacao" )
 		};
 		

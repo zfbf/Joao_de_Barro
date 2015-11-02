@@ -12,6 +12,9 @@ import br.com.nitrox.joaoDeBarro.common.business.services.generators.JoaoDeBarro
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.AbstractJavaEntityCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.ClassOpeningGenerator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoCreateMethodGenerator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoDeleteMethodGenerator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoRetrieveMethodGenerator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoTruncateMethodGenerator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.fragments.AnsiSql99DaoUpdateMethodGenerator;
 
 
@@ -44,6 +47,11 @@ public class AnsiSql99DaoCoordinator extends AbstractJavaEntityCoordinator
 			classOpeningGenerator.setSufix( "AnsiSql99Dao" );
 			classOpeningGenerator.generate();
 			
+			AnsiSql99DaoTruncateMethodGenerator truncateMethodGenerator = 
+					new AnsiSql99DaoTruncateMethodGenerator( 
+							getJavaEntity() );
+			truncateMethodGenerator.generate();
+			
 			AnsiSql99DaoCreateMethodGenerator createMethodGenerator = 
 					new AnsiSql99DaoCreateMethodGenerator( 
 							getJavaEntity() );
@@ -53,6 +61,16 @@ public class AnsiSql99DaoCoordinator extends AbstractJavaEntityCoordinator
 					new AnsiSql99DaoUpdateMethodGenerator( 
 							getJavaEntity() );
 			updateMethodGenerator.generate();
+			
+			AnsiSql99DaoDeleteMethodGenerator deleteMethodGenerator = 
+					new AnsiSql99DaoDeleteMethodGenerator( 
+							getJavaEntity() );
+			deleteMethodGenerator.generate();
+			
+			AnsiSql99DaoRetrieveMethodGenerator retrieveMethodGenerator = 
+					new AnsiSql99DaoRetrieveMethodGenerator( 
+							getJavaEntity() );
+			retrieveMethodGenerator.generate();
 			
 			flush();
 		} catch ( IOException e ) {

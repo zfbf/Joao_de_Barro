@@ -7,7 +7,7 @@
 ##
 
 	
-	public void update( ${java_entity.getNameClassStyle()}Dto[] ${java_entity.getNameAttributeStyle()}Array ) {
+	public void delete( ${java_entity.getNameClassStyle()}Dto[] ${java_entity.getNameAttributeStyle()}Array ) {
 		String message = "Incomplete";
 		throw new IllegalStateException( message );
 	}
