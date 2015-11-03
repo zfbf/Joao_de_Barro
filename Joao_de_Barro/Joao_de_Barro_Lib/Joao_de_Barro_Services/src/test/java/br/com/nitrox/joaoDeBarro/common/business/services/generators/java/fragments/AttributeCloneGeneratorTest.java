@@ -56,9 +56,9 @@ public class AttributeCloneGeneratorTest extends AbstractJoaoDeBarroTestLogger
 	
 	private JavaEntity getJavaEntityRef1() {
 		JavaEntity javaEntity = null;
-		String entityName = "data_staging_hpd_help_desk";
+		int javaEntityCode = JAVA_ENTITY_DATA_STAGING_HPD_HELP_DESK;
 		JavaEntityDao javaEntityDao = new JavaEntityJavaCodeDao();
-		javaEntity = javaEntityDao.getJavaEntity( entityName );
+		javaEntity = javaEntityDao.getJavaEntity( javaEntityCode );
 		return javaEntity;
 	}
 	

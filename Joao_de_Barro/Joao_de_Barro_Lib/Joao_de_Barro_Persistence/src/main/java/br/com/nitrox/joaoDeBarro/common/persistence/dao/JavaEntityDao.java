@@ -4,7 +4,7 @@ import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 
 public interface JavaEntityDao {
 	
-	JavaEntity getJavaEntity( String entityName );
+	JavaEntity getJavaEntity( int entityCode );
 	JavaEntity[] getJavaEntities();
 	
 }

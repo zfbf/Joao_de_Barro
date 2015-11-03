@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityGeneratorJavaEntityCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto.DtoCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.AnsiSql99DaoCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.sql.sqlServer.storedProcedures.SqlServerStoredProcedureInsertCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.serviceLocators.JavaEntityServiceLocator;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.AbstractStaticJoaoDeBarroLogger;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.configurator.Log4jConfigurator;
@@ -34,8 +36,7 @@ public class JoaoDeBarroBatch extends AbstractStaticJoaoDeBarroLogger {
 			Ambiente ambiente = Ambiente.getInstance();
 			
 			if ( ambiente.isOk() ) {
-				generateDtoArtifacts();
-				generateAnsiSql99DaoArtifacts();
+				executeJavaEntityCoordinators();
 			} else {
 				warnAmbienteNaoConfigurado( CLASS_NAME, methodName );
 			}
@@ -56,35 +57,33 @@ public class JoaoDeBarroBatch extends AbstractStaticJoaoDeBarroLogger {
 	}
 	
 	
-	private static void generateDtoArtifacts() throws IOException {
-		String methodName = "generateDtoArtifacts";
+	private static void executeJavaEntityCoordinators() throws IOException {
+		String methodName = "executeJavaEntityCoordinators";
 		debugInicioDoMetodo( CLASS_NAME, methodName );
 		
-		DtoCoordinator dtoCoordinator = new DtoCoordinator();
+		VelocityGeneratorJavaEntityCoordinator[] coordinators = getJavaEntityCoordinators();
 		JavaEntity[] javaEntities = getJavaEntities();
 		
-		for ( JavaEntity javaEntity : javaEntities ) {
-			dtoCoordinator.setJavaEntity( javaEntity );
-			dtoCoordinator.resetBuffer();
-			dtoCoordinator.generate();
-			dtoCoordinator.save();
+		for ( VelocityGeneratorJavaEntityCoordinator coordinator : coordinators ) {
+			for ( JavaEntity javaEntity : javaEntities ) {
+				debug( CLASS_NAME, methodName, javaEntity.getName() );
+				coordinator.setJavaEntity( javaEntity );
+				coordinator.resetBuffer();
+				coordinator.generate();
+				coordinator.save();
+			}	
 		}
 	}
 	
 	
-	private static void generateAnsiSql99DaoArtifacts() throws IOException {
-		String methodName = "generateAnsiSql99DaoArtifacts";
-		debugInicioDoMetodo( CLASS_NAME, methodName );
+	private static VelocityGeneratorJavaEntityCoordinator[] getJavaEntityCoordinators() {
+		VelocityGeneratorJavaEntityCoordinator[] coordinators = new VelocityGeneratorJavaEntityCoordinator[] {
+				new DtoCoordinator(),
+				new AnsiSql99DaoCoordinator(),
+				new SqlServerStoredProcedureInsertCoordinator()
+		};
 		
-		AnsiSql99DaoCoordinator daoCoordinator = new AnsiSql99DaoCoordinator();
-		JavaEntity[] javaEntities = getJavaEntities();
-		
-		for ( JavaEntity javaEntity : javaEntities ) {
-			daoCoordinator.setJavaEntity( javaEntity );
-			daoCoordinator.resetBuffer();
-			daoCoordinator.generate();
-			daoCoordinator.save();
-		}
+		return coordinators;
 	}
 	
 	

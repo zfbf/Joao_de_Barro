@@ -91,7 +91,7 @@ public class AnsiSql99DaoCoordinator extends AbstractJavaEntityCoordinator
 	
 	
 	public String getArtifactName() {
-		String artifactName = getJavaEntity().getNameClassStyle() + "AnsiSql99Dao";
+		String artifactName = getJavaEntity().getNameClassStyle() + "AnsiSql99Dao.java";
 		return artifactName;
 	}
 	

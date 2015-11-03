@@ -59,6 +59,11 @@ import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.Abstra
 public class SqlServerStoredProcedureInsertCoordinator extends AbstractJavaEntityCoordinator
 		implements JoaoDeBarroVelocityConstants {
 	
+	public SqlServerStoredProcedureInsertCoordinator() {
+		;
+	}
+	
+	
 	public SqlServerStoredProcedureInsertCoordinator( JavaEntity javaEntity ) {
 		super( javaEntity );
 	}
@@ -97,7 +102,7 @@ public class SqlServerStoredProcedureInsertCoordinator extends AbstractJavaEntit
 	
 	
 	public String getArtifactName() {
-		String artifactName = getJavaEntity().getTableDbName() + "_INSERT_SP";
+		String artifactName = getJavaEntity().getTableDbName() + "_INSERT_SP.sql";
 		return artifactName;
 	}
 	

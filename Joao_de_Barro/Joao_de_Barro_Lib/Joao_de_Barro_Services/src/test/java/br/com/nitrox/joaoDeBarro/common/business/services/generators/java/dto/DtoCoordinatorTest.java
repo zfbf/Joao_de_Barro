@@ -3,11 +3,13 @@ package br.com.nitrox.joaoDeBarro.common.business.services.generators.java.dto;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto.DtoCoordinator;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.JavaEntityConstants;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.JavaEntityJavaCodeDao;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.serviceLocator.Log4jConfiguratorServiceLocator;
 import br.com.nitrox.joaoDeBarro.testLogger.infrastructure.log4j.AbstractJoaoDeBarroTestLogger;
 
-public class DtoCoordinatorTest extends AbstractJoaoDeBarroTestLogger {
+public class DtoCoordinatorTest extends AbstractJoaoDeBarroTestLogger
+		implements JavaEntityConstants {
 	private DtoCoordinator coordinator;
 	
 	public DtoCoordinatorTest() {
@@ -82,9 +84,9 @@ public class DtoCoordinatorTest extends AbstractJoaoDeBarroTestLogger {
 	
 	private JavaEntity getJavaEntityRef1() {
 		JavaEntity javaEntity = null;
-		String entityName = "data_staging_hpd_help_desk";
+		int javaEntityCode = JAVA_ENTITY_DATA_STAGING_HPD_HELP_DESK;
 		JavaEntityDao javaEntityDao = new JavaEntityJavaCodeDao();
-		javaEntity = javaEntityDao.getJavaEntity( entityName );
+		javaEntity = javaEntityDao.getJavaEntity( javaEntityCode );
 		return javaEntity;
 	}
 	

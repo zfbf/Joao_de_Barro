@@ -155,7 +155,7 @@ public final class Ambiente implements Ambientes, Databases, DatabaseLocations,
 		StringBuffer sb = new StringBuffer();
 		sb.append( "name: " ).append( getAmbienteName() );
 		sb.append( ", javaVersion: " ).append( getJavaVersion() );
-		sb.append( ", gdeSgbdTypeName: " ).append( getSgbdTypeName() );
+		sb.append( ", sgbdTypeName: " ).append( getSgbdTypeName() );
 		sb.append( "\nworkDir: " ).append( getWorkDir() );
 		return sb.toString();
 	}
