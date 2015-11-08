@@ -26,7 +26,10 @@ package br.com.nitrox.joaoDeBarro.business.model.gps;
 		- GPS_Logger
 		- GPS_Test_Logger
 		- GPS_Ambiente
-		- GPS_Common
+		- GPS_Core
+			- GPS_Core_Model
+			- GPS_Core_Persistence
+			- GPS_Core_Services
 		- GPS_Login
 		- GPS_Remedy											// Contém as classes referentes ao Remedy
 	- GPS_Batch_App
@@ -56,12 +59,14 @@ public interface GpsMavenModulesLocationConstants {
 		{ "GPS_Logger", "GPS/GPS_Lib" },
 		{ "GPS_Test_Logger", "GPS/GPS_Lib" },
 		{ "GPS_Ambiente", "GPS/GPS_Lib" },
-		{ "GPS_Model", "GPS/GPS_Lib" },
-		{ "GPS_Persistence", "GPS/GPS_Lib" },
-		{ "GPS_Services", "GPS/GPS_Lib" },
+		{ "GPS_Core", "GPS/GPS_Lib" },
 		{ "GPS_Login", "GPS/GPS_Lib" },
 		{ "GPS_Remedy", "GPS/GPS_Lib" },
 		{ "GPS_ETL", "GPS/GPS_Lib" },
+		
+		{ "GPS_Core_Model", "GPS/GPS_Lib/GPS_Core" },
+		{ "GPS_Core_Persistence", "GPS/GPS_Lib/GPS_Core" },
+		{ "GPS_Core_Services", "GPS/GPS_Lib/GPS_Core" },
 		
 		{ "GPS_ETL_Common", "GPS/GPS_Lib/GPS_ETL" },
 		{ "GPS_Extracao", "GPS/GPS_Lib/GPS_ETL" },

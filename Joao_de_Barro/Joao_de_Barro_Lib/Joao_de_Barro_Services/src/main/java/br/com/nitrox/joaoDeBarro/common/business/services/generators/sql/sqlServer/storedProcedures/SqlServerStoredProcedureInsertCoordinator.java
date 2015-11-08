@@ -95,7 +95,7 @@ public class SqlServerStoredProcedureInsertCoordinator extends AbstractJavaEntit
 	
 	public File getArtifactParentDir() {
 		String workDir = Ambiente.getInstance().getWorkDir();
-		String artifactDir = workDir + "/out/sql/storedProcedures";
+		String artifactDir = workDir + "/out/sql/sqlServer/storedProcedures";
 		File file = new File( artifactDir );
 		return file;
 	}

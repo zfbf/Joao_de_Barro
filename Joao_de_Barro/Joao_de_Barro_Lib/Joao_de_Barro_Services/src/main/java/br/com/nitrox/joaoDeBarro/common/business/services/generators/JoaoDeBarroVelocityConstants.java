@@ -29,4 +29,6 @@ public interface JoaoDeBarroVelocityConstants {
 	
 	int TEMPLATE_ATTRIBUTE_CLONE = 20;
 	
+	int TEMPLATE_SQL_ANSISQL99_CREATE_TABLE = 21;
+	
 }

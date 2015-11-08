@@ -5,8 +5,16 @@ import java.io.IOException;
 import br.com.nitrox.joaoDeBarro.ambiente.infrastructure.Ambiente;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityGeneratorJavaEntityCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityGeneratorMavenModulesCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.createWorkspaceDirectories.CreateWorkspaceDirectoriesCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.deliveryToVersionControlDir.DeliveryToVersionControlDirCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.deliveryToWorkspace.DeliveryToWorkspaceCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.updateFromVersionControlDir.UpdateFromVersionControlDirCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.antFile.updateFromWorkspace.UpdateFromWorkspaceCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.business.model.dto.DtoCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.fragments.FragmentsCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.java.persistence.dao.ansiSql99.AnsiSql99DaoCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.sql.ansiSql99.ddl.CreateTableCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.sql.sqlServer.storedProcedures.SqlServerStoredProcedureInsertCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.serviceLocators.JavaEntityServiceLocator;
 import br.com.nitrox.joaoDeBarro.logger.infrastructure.log4j.AbstractStaticJoaoDeBarroLogger;
@@ -37,6 +45,7 @@ public class JoaoDeBarroBatch extends AbstractStaticJoaoDeBarroLogger {
 			
 			if ( ambiente.isOk() ) {
 				executeJavaEntityCoordinators();
+				executeMavenModulesCoordinators();
 			} else {
 				warnAmbienteNaoConfigurado( CLASS_NAME, methodName );
 			}
@@ -80,7 +89,37 @@ public class JoaoDeBarroBatch extends AbstractStaticJoaoDeBarroLogger {
 		VelocityGeneratorJavaEntityCoordinator[] coordinators = new VelocityGeneratorJavaEntityCoordinator[] {
 				new DtoCoordinator(),
 				new AnsiSql99DaoCoordinator(),
-				new SqlServerStoredProcedureInsertCoordinator()
+				new SqlServerStoredProcedureInsertCoordinator(),
+				new FragmentsCoordinator(),
+				new CreateTableCoordinator()
+		};
+		
+		return coordinators;
+	}
+	
+	
+	private static void executeMavenModulesCoordinators() throws IOException {
+		String methodName = "executeMavenModulesCoordinators";
+		debugInicioDoMetodo( CLASS_NAME, methodName );
+		
+		VelocityGeneratorMavenModulesCoordinator[] coordinators = getMavenModulesCoordinators();
+		
+		for ( VelocityGeneratorMavenModulesCoordinator coordinator : coordinators ) {
+			coordinator.resetBuffer();
+			coordinator.generate();
+			coordinator.save();
+		}
+	}
+	
+	
+	private static VelocityGeneratorMavenModulesCoordinator[] getMavenModulesCoordinators() {
+		VelocityGeneratorMavenModulesCoordinator[] coordinators = 
+				new VelocityGeneratorMavenModulesCoordinator[] {
+						new CreateWorkspaceDirectoriesCoordinator(),
+						new DeliveryToVersionControlDirCoordinator(),
+						new DeliveryToWorkspaceCoordinator(),
+						new UpdateFromVersionControlDirCoordinator(),
+						new UpdateFromWorkspaceCoordinator()
 		};
 		
 		return coordinators;

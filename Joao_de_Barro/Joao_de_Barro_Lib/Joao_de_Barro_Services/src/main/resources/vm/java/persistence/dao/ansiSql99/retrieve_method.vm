@@ -5,10 +5,45 @@
 #set( $ATTRIBUTE_TYPE_INTEGER = "6" )
 #set( $directive.foreach.counter.initial.value = 0 )
 ##
-
 	
-	public ${java_entity.getNameClassStyle()}Dto retrieve( ResultSet rs ) {
-		String message = "Incomplete";
-		throw new IllegalStateException( message );
+	
+	protected ${java_entity.getNameClassStyle()}Dto[] retrieve( ResultSet rs ) throws SQLException {
+		String methodName = "retrieve";
+		debugInicioDoMetodo( methodName );
+		
+		${java_entity.getNameClassStyle()}Dto[] ${java_entity.getNameAttributeStyle()}Array = null;
+		${java_entity.getNameClassStyle()}Dto ${java_entity.getNameAttributeStyle()} = null;
+		ArrayList<${java_entity.getNameClassStyle()}Dto> ${java_entity.getNameAttributeStyle()}AL = 
+				new ArrayList<${java_entity.getNameClassStyle()}Dto>();
+		
+		while ( rs.next() ) {
+			${java_entity.getNameAttributeStyle()} = new ${java_entity.getNameClassStyle()}Dto();
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_DATE ) 
+			
+			Date ${java_attribute.getNameAttributeStyle()} = rs.getTimestamp( "${java_attribute.getColumnName()}" );
+			
+			if ( ! rs.wasNull() ) {
+				${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( ${java_attribute.getNameAttributeStyle()} );
+			}
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_INTEGER )
+			
+			if ( rs.getObject( "${java_attribute.getColumnName()}" ) != null ) {
+				${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( rs.getInt( "${java_attribute.getColumnName()}" ));	
+			}
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_STRING )
+			${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( rs.getString( "${java_attribute.getColumnName()}" ));
+#else
+			// $java_attribute.getTypeName() ${java_attribute.getNameAttributeStyle()}
+#end ##bloco if
+#end ## bloco foreach
+			
+			${java_entity.getNameAttributeStyle()}AL.add( ${java_entity.getNameAttributeStyle()} );
+		}
+		
+		int tam = ${java_entity.getNameAttributeStyle()}AL.size();
+		${java_entity.getNameAttributeStyle()}Array = new ${java_entity.getNameClassStyle()}Dto[ tam ];
+		${java_entity.getNameAttributeStyle()}Array = ${java_entity.getNameAttributeStyle()}AL.toArray( ${java_entity.getNameAttributeStyle()}Array );
+		return ${java_entity.getNameAttributeStyle()}Array;
 	}
 ##

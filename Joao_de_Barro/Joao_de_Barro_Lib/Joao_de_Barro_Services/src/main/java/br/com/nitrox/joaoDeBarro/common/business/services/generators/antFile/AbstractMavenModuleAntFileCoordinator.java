@@ -8,12 +8,12 @@ import br.com.nitrox.joaoDeBarro.business.model.MavenModule;
 import br.com.nitrox.joaoDeBarro.business.model.MavenModulesConstants;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.AbstractGeneratorCoordinator;
 import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityFragmentGenerator;
-import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityGeneratorCoordinator;
+import br.com.nitrox.joaoDeBarro.common.business.services.generators.VelocityGeneratorMavenModulesCoordinator;
 
 
 
 public abstract class AbstractMavenModuleAntFileCoordinator extends AbstractGeneratorCoordinator
-		implements VelocityGeneratorCoordinator, MavenModulesConstants {
+		implements VelocityGeneratorMavenModulesCoordinator, MavenModulesConstants {
 	private MavenModule[] mavenModules;
 	
 	public AbstractMavenModuleAntFileCoordinator() {
@@ -37,6 +37,11 @@ public abstract class AbstractMavenModuleAntFileCoordinator extends AbstractGene
 	
 	public MavenModule[] getMavenModules() {
 		return mavenModules;
+	}
+	
+	
+	public void setMavenModules( MavenModule[] mavenModules ) {
+		this.mavenModules = mavenModules;
 	}
 	
 	

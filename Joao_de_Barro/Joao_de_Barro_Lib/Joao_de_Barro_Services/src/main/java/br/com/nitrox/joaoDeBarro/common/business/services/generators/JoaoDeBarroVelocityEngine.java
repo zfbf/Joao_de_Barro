@@ -221,6 +221,10 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 			templateName = "java/fragments/attribute_clone.vm";
 			break;
 			
+		case TEMPLATE_SQL_ANSISQL99_CREATE_TABLE:
+			templateName = "sql/ansiSql99/ddl/create_table.vm";
+			break;
+			
 		default:
 			break;
 		}

@@ -1,0 +1,17 @@
+##
+##
+##
+	
+	
+		${java_entity.getNameClassStyle()}Dto $first_var = null;
+		
+		if ( ${second_var} != null ) {
+			$first_var = new ${java_entity.getNameClassStyle()}Dto();
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+			${first_var}.set${java_attribute.getNameClassStyle()}( ${second_var}.get${java_attribute.getNameClassStyle()}() );
+#end
+		}
+		
+		return ${first_var};
+
+##

@@ -34,6 +34,7 @@ public class AttributeCloneGeneratorTest extends AbstractJoaoDeBarroTestLogger
 		
 		int templateCode = attributeCloneGenerator.getTemplateCode();
 		assertEquals( templateCode, TEMPLATE_ATTRIBUTE_CLONE );
+		debug( methodName, "templateCode", templateCode );
 	}
 	
 	

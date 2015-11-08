@@ -6,6 +6,7 @@ import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdAuditLogSystemJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdHelpDeskJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.JavaAttributeJavaCodeUnit;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.ProdutoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.SolicitacaoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.TipoSolicitacaoJavaAttributesJavaCode;
 
@@ -38,6 +39,12 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes,
 			javaEntity.setName( JAVA_ENTITY_NAME_TIPO_SOLICITACAO );
 			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_TIPO_SOLICITACAO );
 			javaAttributeJavaCodeUnit = new TipoSolicitacaoJavaAttributesJavaCode();
+			break;
+			
+		case JAVA_ENTITY_PRODUTO:
+			javaEntity.setName( JAVA_ENTITY_NAME_PRODUTO );
+			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_PRODUTO );
+			javaAttributeJavaCodeUnit = new ProdutoJavaAttributesJavaCode();
 			break;
 			
 		default:

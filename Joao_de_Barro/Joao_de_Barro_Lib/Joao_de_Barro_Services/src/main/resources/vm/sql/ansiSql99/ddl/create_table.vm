@@ -1,0 +1,16 @@
+##Template de uso geral para declaração de atributos
+##
+##
+
+
+CREATE TABLE ${java_entity.getTableDbName()} (
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if( ${java_attribute.isIdentity()} )
+	${java_attribute.getColumnName()} ${java_attribute.getDatabaseType()} PRIMARY KEY,
+#else
+	${java_attribute.getColumnName()} ${java_attribute.getDatabaseType()},
+#end
+#end
+)
+GO
+##

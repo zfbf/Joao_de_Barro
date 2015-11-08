@@ -10,7 +10,7 @@ public class SolicitacaoJavaAttributesJavaCode
 	public JavaAttribute[] getJavaAttributes() {
 		JavaAttribute[] javaAttributeArray = new JavaAttribute[] {
 				JavaAttributeFactory.build(
-						"ide_solic_ti",
+						"identificador",
 						"ide_solic_ti",
 						JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER,
 						"int",
@@ -109,7 +109,27 @@ public class SolicitacaoJavaAttributesJavaCode
 						false,
 						false,
 						null ),
-
+						
+				JavaAttributeFactory.build(
+						"login_gerente",
+						"nom_login_ger_resp_exec",
+						JAVA_ATTRIBUTE_TYPE_STRING,
+						"VARCHAR(16)",
+						true,
+						false,
+						false,
+						null ),
+						
+				JavaAttributeFactory.build(
+						"ide_gerencia",
+						"ide_gerenc_resp_exec",
+						JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER,
+						"int",
+						true,
+						false,
+						false,
+						null ),
+						
 				JavaAttributeFactory.build(
 						"data_solicitacao",
 						"dat_solic",
@@ -141,16 +161,6 @@ public class SolicitacaoJavaAttributesJavaCode
 						null ),
 						
 				JavaAttributeFactory.build(
-						"login_gerente",
-						"nom_login_ger_resp_exec",
-						JAVA_ATTRIBUTE_TYPE_STRING,
-						"VARCHAR(16)",
-						true,
-						false,
-						false,
-						null ),
-						
-				JavaAttributeFactory.build(
 						"assunto",
 						"des_assnt",
 						JAVA_ATTRIBUTE_TYPE_STRING,
@@ -171,20 +181,10 @@ public class SolicitacaoJavaAttributesJavaCode
 						null ),
 						
 				JavaAttributeFactory.build(
-						"ide_gerencia",
-						"ide_gerenc_resp_exec",
+						"ide_produto",
+						"ide_prdt_ti",
 						JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER,
 						"int",
-						true,
-						false,
-						false,
-						null ),
-						
-				JavaAttributeFactory.build(
-						"nome_produto",
-						"nom_prdt_ti",
-						JAVA_ATTRIBUTE_TYPE_STRING,
-						"VARCHAR(128)",
 						true,
 						false,
 						false,
