@@ -41,8 +41,8 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes,
 			javaAttributeJavaCodeUnit = new TipoSolicitacaoJavaAttributesJavaCode();
 			break;
 			
-		case JAVA_ENTITY_PRODUTO:
-			javaEntity.setName( JAVA_ENTITY_NAME_PRODUTO );
+		case JAVA_ENTITY_PRODUTO_TI:
+			javaEntity.setName( JAVA_ENTITY_NAME_PRODUTO_TI );
 			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_PRODUTO );
 			javaAttributeJavaCodeUnit = new ProdutoJavaAttributesJavaCode();
 			break;

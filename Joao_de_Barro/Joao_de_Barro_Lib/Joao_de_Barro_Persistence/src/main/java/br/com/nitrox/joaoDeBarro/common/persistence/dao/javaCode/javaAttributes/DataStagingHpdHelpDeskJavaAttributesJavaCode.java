@@ -73,7 +73,7 @@ public class DataStagingHpdHelpDeskJavaAttributesJavaCode
 						"assigned_group",
 						"assigned_group",
 						JAVA_ATTRIBUTE_TYPE_STRING,
-						"VARCHAR(32)",
+						"VARCHAR(64)",
 						true,
 						false,
 						false,

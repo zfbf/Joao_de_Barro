@@ -135,14 +135,14 @@ public class SolicitacaoJavaAttributesJavaCode
 						"dat_solic",
 						JAVA_ATTRIBUTE_TYPE_DATE,
 						"datetime",
-						true,
+						false,
 						false,
 						false,
 						null ),
 						
 				JavaAttributeFactory.build(
-						"data_entrega",
-						"dat_entrg",
+						"data_atribuicao",
+						"dat_atrbc",
 						JAVA_ATTRIBUTE_TYPE_DATE,
 						"datetime",
 						true,
@@ -151,8 +151,28 @@ public class SolicitacaoJavaAttributesJavaCode
 						null ),
 						
 				JavaAttributeFactory.build(
-						"data_fechamento",
-						"dat_fechmnt",
+						"data_conclusao",
+						"dat_cnclu",
+						JAVA_ATTRIBUTE_TYPE_DATE,
+						"datetime",
+						true,
+						false,
+						false,
+						null ),
+						
+				JavaAttributeFactory.build(
+						"data_finalizacao",
+						"dat_finalzc",
+						JAVA_ATTRIBUTE_TYPE_DATE,
+						"datetime",
+						true,
+						false,
+						false,
+						null ),
+						
+				JavaAttributeFactory.build(
+						"data_cancelamento",
+						"dat_cancmto",
 						JAVA_ATTRIBUTE_TYPE_DATE,
 						"datetime",
 						true,
@@ -181,7 +201,7 @@ public class SolicitacaoJavaAttributesJavaCode
 						null ),
 						
 				JavaAttributeFactory.build(
-						"ide_produto",
+						"ide_produto_ti",
 						"ide_prdt_ti",
 						JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER,
 						"int",
