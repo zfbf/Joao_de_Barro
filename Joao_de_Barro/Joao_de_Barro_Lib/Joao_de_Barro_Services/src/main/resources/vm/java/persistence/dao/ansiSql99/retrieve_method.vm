@@ -3,6 +3,7 @@
 #set( $ATTRIBUTE_TYPE_STRING = "4" )
 #set( $ATTRIBUTE_TYPE_DATE = "5" )
 #set( $ATTRIBUTE_TYPE_INTEGER = "6" )
+#set( $ATTRIBUTE_TYPE_FLOAT_WRAPPER = "7" )
 #set( $directive.foreach.counter.initial.value = 0 )
 ##
 	
@@ -30,6 +31,11 @@
 			
 			if ( rs.getObject( "${java_attribute.getColumnName()}" ) != null ) {
 				${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( rs.getInt( "${java_attribute.getColumnName()}" ));	
+			}
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_FLOAT_WRAPPER )
+			
+			if ( rs.getObject( "${java_attribute.getColumnName()}" ) != null ) {
+				${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( rs.getFloat( "${java_attribute.getColumnName()}" ));	
 			}
 #elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_STRING )
 			${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( rs.getString( "${java_attribute.getColumnName()}" ));

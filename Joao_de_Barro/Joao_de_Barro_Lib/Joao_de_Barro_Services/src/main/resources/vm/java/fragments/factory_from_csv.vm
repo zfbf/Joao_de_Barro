@@ -1,0 +1,108 @@
+##Template de uso geral do metodo set
+##
+#set( $ATTRIBUTE_TYPE_STRING = "4" )
+#set( $ATTRIBUTE_TYPE_DATE = "5" )
+#set( $ATTRIBUTE_TYPE_INTEGER = "6" )
+#set( $ATTRIBUTE_TYPE_FLOAT_WRAPPER = "7" )
+
+#set( $directive.foreach.counter.initial.value = 0 )
+##
+	// CSV Token Handler
+	
+	public static ${java_entity.getNameClassStyle()}Dto build( String[] tokens ) {
+		String methodName = "build";
+		${java_entity.getNameClassStyle()}Dto ${java_entity.getNameAttributeStyle()} = new ${java_entity.getNameClassStyle()}Dto();
+		DateFormat df = new SimpleDateFormat( "dd/MM/yyyy" );
+		int index = 0;
+		
+		try {
+			if ( tokens == null ) {
+				warn( CLASS_NAME, methodName, "tokens is null" );
+				return null;
+			}
+#foreach( $java_attribute in $java_entity.getJavaAttributes() ) 
+#if ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_DATE )
+			
+			String ${java_attribute.getNameAttributeStyle()}S = tokens[index++];
+			
+			if ( ${java_attribute.getNameAttributeStyle()}S != null ) {
+				${java_attribute.getNameAttributeStyle()}S = ${java_attribute.getNameAttributeStyle()}S.trim();
+				
+				if ( ${java_attribute.getNameAttributeStyle()}S.length() > 0 ) {
+					try {
+						Date ${java_attribute.getNameAttributeStyle()} = df.parse( ${java_attribute.getNameAttributeStyle()}S );
+						${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( ${java_attribute.getNameAttributeStyle()} );
+					} catch ( ParseException e ) {
+						warn( CLASS_NAME, methodName, e.getMessage() );
+						debug( CLASS_NAME, methodName, "${java_attribute.getNameAttributeStyle()}S", 
+								${java_attribute.getNameAttributeStyle()}S );
+					}
+ 				}
+			}
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_INTEGER )
+#if (${java_attribute.isIdentity()})
+#end
+			
+			String ${java_attribute.getNameAttributeStyle()}S = tokens[index++];
+			
+			if ( ${java_attribute.getNameAttributeStyle()}S != null ) {
+				${java_attribute.getNameAttributeStyle()}S = ${java_attribute.getNameAttributeStyle()}S.trim();
+				
+				if ( ${java_attribute.getNameAttributeStyle()}S.length() > 0 ) {
+					try {
+						Integer ${java_attribute.getNameAttributeStyle()} = Integer.valueOf( ${java_attribute.getNameAttributeStyle()}S );
+						${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( ${java_attribute.getNameAttributeStyle()} );
+					} catch ( NumberFormatException e ) {
+						warn( CLASS_NAME, methodName, e.getMessage() );
+						debug( CLASS_NAME, methodName, "${java_attribute.getNameAttributeStyle()}S", 
+								${java_attribute.getNameAttributeStyle()}S );
+					}
+ 				}
+			}
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_FLOAT_WRAPPER )
+			
+			String ${java_attribute.getNameAttributeStyle()}S = tokens[index++];
+			
+			if ( ${java_attribute.getNameAttributeStyle()}S != null ) {
+				${java_attribute.getNameAttributeStyle()}S = ${java_attribute.getNameAttributeStyle()}S.trim();
+				
+				if ( ${java_attribute.getNameAttributeStyle()}S.length() > 0 ) {
+					try {
+						Float ${java_attribute.getNameAttributeStyle()} = Float.valueOf( ${java_attribute.getNameAttributeStyle()}S );
+						${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( ${java_attribute.getNameAttributeStyle()} );
+					} catch ( NumberFormatException e ) {
+						warn( CLASS_NAME, methodName, e.getMessage() );
+						debug( CLASS_NAME, methodName, "${java_attribute.getNameAttributeStyle()}S", 
+								${java_attribute.getNameAttributeStyle()}S );
+					}
+ 				}
+			}
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_STRING )
+			
+			String ${java_attribute.getNameAttributeStyle()}S = tokens[index++];
+			
+			if ( ${java_attribute.getNameAttributeStyle()}S != null ) {
+				${java_attribute.getNameAttributeStyle()}S = ${java_attribute.getNameAttributeStyle()}S.trim();
+				
+				if ( ${java_attribute.getNameAttributeStyle()}S.length() > 0 ) {
+					${java_entity.getNameAttributeStyle()}.set${java_attribute.getNameClassStyle()}( ${java_attribute.getNameAttributeStyle()}S );
+ 				}
+			}
+#else
+				
+				// $java_attribute.getTypeName() ${java_attribute.getNameAttributeStyle()}
+#end ##bloco if
+#end ## bloco foreach
+		} catch ( NumberFormatException e ) {
+			debug( CLASS_NAME, methodName, "index", index );
+			warn( CLASS_NAME, methodName, e.getMessage() );
+			warn( CLASS_NAME, methodName, ", Ocorreu um erro de parse, tokens.length: " + 
+					tokens.length );
+		} catch ( Exception e ) {
+			warn( CLASS_NAME, methodName, e.getMessage() );
+			warn( CLASS_NAME, methodName, ", tokens.length: " + tokens.length );
+		}
+		
+		return ${java_entity.getNameAttributeStyle()};
+	}
+##

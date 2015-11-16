@@ -225,6 +225,10 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 			templateName = "sql/ansiSql99/ddl/create_table.vm";
 			break;
 			
+		case TEMPLATE_FACTORY_FROM_CSV:
+			templateName = "java/fragments/factory_from_csv.vm";
+			break;
+			
 		default:
 			break;
 		}

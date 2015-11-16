@@ -1,8 +1,8 @@
 ##
 ##
 ##
-	
-	
+		// Attribute Clone Fragment
+		
 		${java_entity.getNameClassStyle()}Dto $first_var = null;
 		
 		if ( ${second_var} != null ) {

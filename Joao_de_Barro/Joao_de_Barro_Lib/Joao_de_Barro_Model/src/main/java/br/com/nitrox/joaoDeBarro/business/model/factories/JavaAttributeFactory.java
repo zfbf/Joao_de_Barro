@@ -1,6 +1,7 @@
 package br.com.nitrox.joaoDeBarro.business.model.factories;
 
 import br.com.nitrox.joaoDeBarro.business.model.DateJavaAttribute;
+import br.com.nitrox.joaoDeBarro.business.model.FloatWrapperJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.IntegerWrapperJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttributeTypes;
@@ -36,6 +37,10 @@ public class JavaAttributeFactory implements JavaAttributeTypes {
 			
 		case JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER:
 			javaAttribute = new IntegerWrapperJavaAttribute();
+			break;
+			
+		case JAVA_ATTRIBUTE_TYPE_FLOAT_WRAPPER:
+			javaAttribute = new FloatWrapperJavaAttribute();
 			break;
 			
 		case JAVA_ATTRIBUTE_TYPE_STRING:

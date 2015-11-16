@@ -3,6 +3,8 @@
 #set( $ATTRIBUTE_TYPE_STRING = "4" )
 #set( $ATTRIBUTE_TYPE_DATE = "5" )
 #set( $ATTRIBUTE_TYPE_INTEGER = "6" )
+#set( $ATTRIBUTE_TYPE_FLOAT_WRAPPER = "7" )
+
 #set( $directive.foreach.counter.initial.value = 0 )
 ##
 	
@@ -43,6 +45,17 @@
 					pstm.setInt( parameterIndex++, ${java_attribute.getNameAttributeStyle()}.intValue() );
 				} else {
 					pstm.setNull( parameterIndex++, Types.INTEGER );
+				}
+#end
+#elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_FLOAT_WRAPPER )
+#if (!${java_attribute.isIdentity()})
+				
+				Float ${java_attribute.getNameAttributeStyle()} = ${java_entity.getNameAttributeStyle()}.get${java_attribute.getNameClassStyle()}();
+				
+				if ( ${java_attribute.getNameAttributeStyle()} != null ) {
+					pstm.setFloat( parameterIndex++, ${java_attribute.getNameAttributeStyle()}.floatValue() );
+				} else {
+					pstm.setNull( parameterIndex++, Types.FLOAT );
 				}
 #end
 #elseif ( ${java_attribute.getType()} == $ATTRIBUTE_TYPE_STRING )

@@ -31,4 +31,6 @@ public interface JoaoDeBarroVelocityConstants {
 	
 	int TEMPLATE_SQL_ANSISQL99_CREATE_TABLE = 21;
 	
+	int TEMPLATE_FACTORY_FROM_CSV = 22;
+	
 }

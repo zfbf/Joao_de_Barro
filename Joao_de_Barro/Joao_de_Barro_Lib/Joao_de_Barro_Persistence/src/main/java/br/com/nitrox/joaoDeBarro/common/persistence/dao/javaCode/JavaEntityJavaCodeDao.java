@@ -3,8 +3,10 @@ package br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttributeTypes;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.CsvNotesPedidoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdAuditLogSystemJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdHelpDeskJavaAttributesJavaCode;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingNotesPedidoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.JavaAttributeJavaCodeUnit;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.ProdutoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.SolicitacaoJavaAttributesJavaCode;
@@ -45,6 +47,17 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes,
 			javaEntity.setName( JAVA_ENTITY_NAME_PRODUTO_TI );
 			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_PRODUTO );
 			javaAttributeJavaCodeUnit = new ProdutoJavaAttributesJavaCode();
+			break;
+			
+		case JAVA_ENTITY_DATA_STAGING_NOTES_PEDIDO:
+			javaEntity.setName( JAVA_ENTITY_NAME_DATA_STAGING_NOTES_PEDIDO );
+			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_DATA_STAGING_NOTES_PEDIDO );
+			javaAttributeJavaCodeUnit = new DataStagingNotesPedidoJavaAttributesJavaCode();
+			break;
+			
+		case JAVA_ENTITY_CSV_NOTES_PEDIDO:
+			javaEntity.setName( JAVA_ENTITY_NAME_CSV_NOTES_PEDIDO );
+			javaAttributeJavaCodeUnit = new CsvNotesPedidoJavaAttributesJavaCode();
 			break;
 			
 		default:

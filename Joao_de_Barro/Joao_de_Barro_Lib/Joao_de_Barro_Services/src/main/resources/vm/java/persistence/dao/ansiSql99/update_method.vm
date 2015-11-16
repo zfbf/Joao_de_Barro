@@ -3,6 +3,8 @@
 #set( $ATTRIBUTE_TYPE_STRING = "4" )
 #set( $ATTRIBUTE_TYPE_DATE = "5" )
 #set( $ATTRIBUTE_TYPE_INTEGER = "6" )
+#set( $ATTRIBUTE_TYPE_FLOAT_WRAPPER = "7" )
+
 #set( $directive.foreach.counter.initial.value = 0 )
 ##
 

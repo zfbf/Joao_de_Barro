@@ -208,6 +208,26 @@ public class SolicitacaoJavaAttributesJavaCode
 						true,
 						false,
 						false,
+						null ),
+						
+				JavaAttributeFactory.build(
+						"ide_controle_carga",
+						"ide_cga_gps",
+						JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER,
+						"int",
+						false,
+						false,
+						false,
+						null ),
+						
+				JavaAttributeFactory.build(
+						"ide_status_carga",
+						"ide_status_carga",
+						JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER,
+						"int",
+						true,
+						false,
+						false,
 						null )
 		};
 		
