@@ -3,6 +3,7 @@ package br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttributeTypes;
 import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.ColaboradorJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.CsvNotesPedidoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdAuditLogSystemJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdHelpDeskJavaAttributesJavaCode;
@@ -58,6 +59,12 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes,
 		case JAVA_ENTITY_CSV_NOTES_PEDIDO:
 			javaEntity.setName( JAVA_ENTITY_NAME_CSV_NOTES_PEDIDO );
 			javaAttributeJavaCodeUnit = new CsvNotesPedidoJavaAttributesJavaCode();
+			break;
+			
+		case JAVA_ENTITY_COLABORADOR:
+			javaEntity.setName( JAVA_ENTITY_NAME_COLABORADOR );
+			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_COLABORADOR );
+			javaAttributeJavaCodeUnit = new ColaboradorJavaAttributesJavaCode();
 			break;
 			
 		default:
