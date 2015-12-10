@@ -21,17 +21,17 @@ public class ProdutoJavaAttributesJavaCode
 						
 				JavaAttributeFactory.build(
 						"nome",
-						"nom_prdt_ti",
+						"nom_prdt_ti_gps",
 						JAVA_ATTRIBUTE_TYPE_STRING,
 						"VARCHAR(128)",
 						false,
 						false,
-						false,
+						false,	
 						null ),
 						
 				JavaAttributeFactory.build(
 						"abreviatura",
-						"nom_abrv_prdt_ti",
+						"nom_abrv_prdt_ti_gps",
 						JAVA_ATTRIBUTE_TYPE_STRING,
 						"VARCHAR(16)",
 						false,
@@ -40,8 +40,8 @@ public class ProdutoJavaAttributesJavaCode
 						null ),
 						
 				JavaAttributeFactory.build(
-						"nome_remedy",
-						"nom_prdt_ti_remedy",
+						"nome_fonte_externa",
+						"nom_prdt_ti_fnt_extrn",
 						JAVA_ATTRIBUTE_TYPE_STRING,
 						"VARCHAR(128)",
 						true,

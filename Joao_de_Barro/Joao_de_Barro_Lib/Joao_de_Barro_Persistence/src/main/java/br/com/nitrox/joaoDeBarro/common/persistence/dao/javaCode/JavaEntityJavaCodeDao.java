@@ -10,6 +10,7 @@ import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingNotesPedidoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.JavaAttributeJavaCodeUnit;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.ProdutoJavaAttributesJavaCode;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.SistemaTiJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.SolicitacaoJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.TipoSolicitacaoJavaAttributesJavaCode;
 
@@ -65,6 +66,12 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes,
 			javaEntity.setName( JAVA_ENTITY_NAME_COLABORADOR );
 			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_COLABORADOR );
 			javaAttributeJavaCodeUnit = new ColaboradorJavaAttributesJavaCode();
+			break;
+			
+		case JAVA_ENTITY_SISTEMA_TI:
+			javaEntity.setName( JAVA_ENTITY_NAME_SISTEMA_TI );
+			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_SISTEMA_TI );
+			javaAttributeJavaCodeUnit = new SistemaTiJavaAttributesJavaCode();
 			break;
 			
 		default:
