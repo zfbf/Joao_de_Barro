@@ -14,10 +14,12 @@ public class GetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 		implements JavaAttributeTypes {
 	private JavaAttributeVelocityGenerator commonGetMethodGenerator;
 	private JavaAttributeVelocityGenerator dateGetMethodGenerator;
+	private JavaAttributeVelocityGenerator booleanGetMethodGenerator;
 	
 	public GetMethodGeneratorHandler() {
 		commonGetMethodGenerator = new CommonGetMethodGenerator();
 		dateGetMethodGenerator = new DateGetMethodGenerator();
+		booleanGetMethodGenerator = new BooleanGetMethodGenerator();
 	}
 	
 	
@@ -35,6 +37,11 @@ public class GetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 			switch ( javaAttribute.getType() ) {
 			case JAVA_ATTRIBUTE_TYPE_DATE:
 				generator = dateGetMethodGenerator; 
+				break;
+				
+			case JAVA_ATTRIBUTE_TYPE_BOOLEAN:
+			case JAVA_ATTRIBUTE_TYPE_BOOLEAN_WRAPPER:
+				generator = booleanGetMethodGenerator; 
 				break;
 
 			default:

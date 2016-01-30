@@ -1,0 +1,9 @@
+##Template de uso do metodo get para os tipos boolean e Boolean
+##
+##
+	
+	
+	public ${java_attribute.getTypeName()} is${java_attribute.getNameClassStyle()}() {
+		return this.${java_attribute.getNameAttributeStyle()};
+	}
+##

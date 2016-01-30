@@ -165,12 +165,20 @@ public class JoaoDeBarroVelocityEngine extends AbstractJoaoDeBarroLogger
 			templateName = "java/set_methods/integer_wrapper_set_method.vm";
 			break;
 			
+		case TEMPLATE_BOOLEAN_SET_METHOD:
+			templateName = "java/set_methods/boolean_set_method.vm";
+			break;
+			
 		case TEMPLATE_COMMON_GET_METHOD:
 			templateName = "java/get_methods/common_get_method.vm";
 			break;
 			
 		case TEMPLATE_DATE_GET_METHOD:
 			templateName = "java/get_methods/date_get_method.vm";
+			break;
+			
+		case TEMPLATE_BOOLEAN_GET_METHOD:
+			templateName = "java/get_methods/boolean_get_method.vm";
 			break;
 			
 		case TEMPLATE_MAVEN_MODULE_CREATE_WORKSPACE_DIRECTORIES:

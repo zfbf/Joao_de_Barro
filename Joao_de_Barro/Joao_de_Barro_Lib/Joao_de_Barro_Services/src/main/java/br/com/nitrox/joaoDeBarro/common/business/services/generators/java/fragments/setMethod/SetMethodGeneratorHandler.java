@@ -15,11 +15,13 @@ public class SetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 	private JavaAttributeVelocityGenerator commonSetMethodGenerator;
 	private JavaAttributeVelocityGenerator floatWrapperSetMethodGenerator;
 	private JavaAttributeVelocityGenerator integerWrapperSetMethodGenerator;
+	private JavaAttributeVelocityGenerator booleanSetMethodGenerator;
 	
 	public SetMethodGeneratorHandler() {
 		commonSetMethodGenerator = new CommonSetMethodGenerator();
 		floatWrapperSetMethodGenerator = new FloatWrapperSetMethodGenerator();
 		integerWrapperSetMethodGenerator = new IntegerWrapperSetMethodGenerator();
+		booleanSetMethodGenerator = new BooleanSetMethodGenerator();
 	}
 	
 	
@@ -42,6 +44,11 @@ public class SetMethodGeneratorHandler extends AbstractJoaoDeBarroLogger
 				
 			case JAVA_ATTRIBUTE_TYPE_INTEGER_WRAPPER:
 				generator = integerWrapperSetMethodGenerator; 
+				break;
+				
+			case JAVA_ATTRIBUTE_TYPE_BOOLEAN:
+			case JAVA_ATTRIBUTE_TYPE_BOOLEAN_WRAPPER:
+				generator = booleanSetMethodGenerator; 
 				break;
 				
 			default:

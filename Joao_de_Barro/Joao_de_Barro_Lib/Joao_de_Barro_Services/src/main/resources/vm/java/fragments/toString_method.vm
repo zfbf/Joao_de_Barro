@@ -1,6 +1,8 @@
 ##Template de uso geral para o metodo toString()
 ##
 #set( $ATTRIBUTE_TYPE_DATE = "5" )
+#set( $ATTRIBUTE_TYPE_BOOLEAN_WRAPPER = "8" )
+#set( $ATTRIBUTE_TYPE_BOOLEAN = "9" )
 ##
 	
 	
@@ -16,6 +18,9 @@
 		} else {
 			sb.append( "\n\t$java_attribute.getNameAttributeStyle() = " ).append( get${java_attribute.getNameClassStyle()}() );
 		}
+#elseif( $java_attribute.getType() == $ATTRIBUTE_TYPE_BOOLEAN_WRAPPER 
+			|| $java_attribute.getType() == $ATTRIBUTE_TYPE_BOOLEAN )
+		sb.append( "\n\t${java_attribute.getNameAttributeStyle()} = " ).append( is${java_attribute.getNameClassStyle()}() );
 #else
 		sb.append( "\n\t${java_attribute.getNameAttributeStyle()} = " ).append( get${java_attribute.getNameClassStyle()}() );
 #end

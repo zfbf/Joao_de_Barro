@@ -1,0 +1,24 @@
+##Template de uso do metodo set para os tipos boolean e Boolean
+##
+#set( $ATTRIBUTE_TYPE_BOOLEAN_WRAPPER = "8" )
+#set( $ATTRIBUTE_TYPE_BOOLEAN = "9" )
+##
+	
+	
+	public void set$java_attribute.getNameClassStyle()( boolean $java_attribute.getNameAttributeStyle() ) {
+#if ( $java_attribute.getType() == $ATTRIBUTE_TYPE_BOOLEAN )
+		this.$java_attribute.getNameAttributeStyle() = $java_attribute.getNameAttributeStyle();
+#elseif( $java_attribute.getType() == $ATTRIBUTE_TYPE_BOOLEAN_WRAPPER )
+		this.$java_attribute.getNameAttributeStyle() = Boolean.valueOf( $java_attribute.getNameAttributeStyle() );
+#end
+	}
+	
+	
+	public void set$java_attribute.getNameClassStyle()( Boolean $java_attribute.getNameAttributeStyle() ) {
+#if ( $java_attribute.getType() == $ATTRIBUTE_TYPE_BOOLEAN )
+		this.$java_attribute.getNameAttributeStyle() = Boolean.valueOf( $java_attribute.getNameAttributeStyle() );
+#elseif( $java_attribute.getType() == $ATTRIBUTE_TYPE_BOOLEAN_WRAPPER )
+		this.$java_attribute.getNameAttributeStyle() = $java_attribute.getNameAttributeStyle();
+#end
+	}
+##

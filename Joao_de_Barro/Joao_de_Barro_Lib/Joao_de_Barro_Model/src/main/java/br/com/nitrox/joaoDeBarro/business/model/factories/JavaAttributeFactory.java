@@ -1,10 +1,12 @@
 package br.com.nitrox.joaoDeBarro.business.model.factories;
 
+import br.com.nitrox.joaoDeBarro.business.model.BooleanWrapperJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.DateJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.FloatWrapperJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.IntegerWrapperJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.JavaAttributeTypes;
+import br.com.nitrox.joaoDeBarro.business.model.PrimitiveBooleanJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.PrimitiveIntJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.PrimitiveLongJavaAttribute;
 import br.com.nitrox.joaoDeBarro.business.model.StringJavaAttribute;
@@ -45,6 +47,14 @@ public class JavaAttributeFactory implements JavaAttributeTypes {
 			
 		case JAVA_ATTRIBUTE_TYPE_STRING:
 			javaAttribute = new StringJavaAttribute();
+			break;
+			
+		case JAVA_ATTRIBUTE_TYPE_BOOLEAN_WRAPPER:
+			javaAttribute = new BooleanWrapperJavaAttribute();
+			break;
+			
+		case JAVA_ATTRIBUTE_TYPE_BOOLEAN:
+			javaAttribute = new PrimitiveBooleanJavaAttribute();
 			break;
 			
 		default:

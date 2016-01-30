@@ -5,6 +5,7 @@ import br.com.nitrox.joaoDeBarro.business.model.JavaEntity;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.JavaEntityDao;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.ColaboradorJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.CsvNotesPedidoJavaAttributesJavaCode;
+import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingContagemProjetoMelhoriaJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdAuditLogSystemJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingHpdHelpDeskJavaAttributesJavaCode;
 import br.com.nitrox.joaoDeBarro.common.persistence.dao.javaCode.javaAttributes.DataStagingNotesPedidoJavaAttributesJavaCode;
@@ -72,6 +73,12 @@ public class JavaEntityJavaCodeDao implements JavaEntityDao, JavaAttributeTypes,
 			javaEntity.setName( JAVA_ENTITY_NAME_SISTEMA_TI );
 			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_SISTEMA_TI );
 			javaAttributeJavaCodeUnit = new SistemaTiJavaAttributesJavaCode();
+			break;
+			
+		case JAVA_ENTITY_DATA_STAGING_CONTAGEM_PROJETO_MELHORIA:
+			javaEntity.setName( JAVA_ENTITY_NAME_DATA_STAGING_CONTAGEM_PROJETO_MELHORIA );
+			javaEntity.setDatabaseTableName( JAVA_TABLE_NAME_DATA_STAGING_CONTAGEM_PROJETO_MELHORIA );
+			javaAttributeJavaCodeUnit = new DataStagingContagemProjetoMelhoriaJavaAttributesJavaCode();
 			break;
 			
 		default:
